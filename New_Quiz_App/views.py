@@ -1,4 +1,4 @@
 import flask 
 
 def render_new_quiz():
-    pass
+    return flask.render_template("New_Quiz_App.html")
