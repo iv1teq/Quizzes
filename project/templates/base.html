@@ -9,7 +9,15 @@
     <body>
 
         <header>
-            <h1>enter</h1>
+            <img class="logo-img" src="{{ url_for('static', filename='img/logo.png') }}" alt="">
+            <div class="urls">
+                <div class="login-div">
+                    <a class="login-a" href="/login">Log in</a>
+                </div>
+                <div class="signup-div">
+                    <a class="signup-a" href="/registration">Sign up</a>
+                </div>
+            </div>
         </header>
 
         <main>
