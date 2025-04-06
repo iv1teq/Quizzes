@@ -1,4 +1,4 @@
-import home_app
+import home_app, New_Quiz_App
 
 from .settings import project
 

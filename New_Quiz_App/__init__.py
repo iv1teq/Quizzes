@@ -1,1 +1,2 @@
-from .app import New_Quiz
+from .app import *
+from .views import *
