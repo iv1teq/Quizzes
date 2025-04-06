@@ -6,7 +6,10 @@
     box-sizing: border-box;
     font-family: 'Quicksand';
     background-color: #EBEBEB;
-
+}
+body{
+    width: 100vw;
+    height: 100vh;
 }
 header{
     display: flex;
@@ -14,11 +17,11 @@ header{
     justify-content: space-between;
     align-items: center;
     height: 80px;
-    width: 100vw;
+    width: 100%;
     padding-top: 10px;
     padding-bottom: 10px;
-    padding-left: 15vw;
-    padding-right: 15vw;
+    padding-left: 17%;
+    padding-right: 17%;
 
 }
 .urls{
