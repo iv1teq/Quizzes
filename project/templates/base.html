@@ -9,7 +9,8 @@
     <body>
 
         <header>
-            <img class="logo-img" src="{{ url_for('static', filename='img/logo.png') }}" alt="">
+            <a href="/"><img class="logo-img" src="{{ url_for('static', filename='img/logo.png') }}" alt="logo image"></a>
+            {% if page == 'home' and not is_auth == True%}
             <div class="urls">
                 <div class="login-div">
                     <a class="login-a" href="/login">Log in</a>
@@ -18,6 +19,19 @@
                     <a class="signup-a" href="/registration">Sign up</a>
                 </div>
             </div>
+            {% elif page == 'home' and is_auth == True %}
+            {% elif page == 'profile' and not is_auth == True %}
+            {% elif page == 'profile' and is_auth == True %}
+            {% elif page == 'history' and not is_auth == True %}
+            {% elif page == 'history' and is_auth == True %}
+            {% elif page == 'authorization' and not is_auth == True %}
+            {% elif page == 'authorization' and is_auth == True %}
+            {% elif page == 'registration' and not is_auth == True %}
+            {% elif page == 'registration' and is_auth == True %}
+            {% elif page == 'new_quiz' and not is_auth == True %}
+            {% elif page == 'new_quiz' and is_auth == True %}
+
+            {% endif %}
         </header>
 
         <main>
