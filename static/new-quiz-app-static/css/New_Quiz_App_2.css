@@ -82,7 +82,6 @@ main{
     cursor: pointer; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
 }
-.big-choice { box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); }
 
 p {
     font-size: 25px;
@@ -103,7 +102,32 @@ img{
     border-radius: 20px;
     justify-content: center;
     align-items: center;
-    
+}
+
+.fill-form-frame-2{
+    display: flex;
+    width: 100%;
+    height: 383px;
+    border: 2px solid;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 29px;
+}
+
+.fill-form { box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); }
+
+.enter-btn{
+    width: 65px;
+    height: 65px;
+    border: 1px solid;
+    border-radius: 20px;
+    font-size: 16px;
+    font-family: 'Quicksand', sans-serif;
+    color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(97, 208, 63, 0.5);
+    cursor: pointer;
 }
 
 .answers-options-frame{
@@ -127,39 +151,4 @@ input{
     text-align: center;
     outline: none;
     color: hsla(0, 0%, 0%, 0.25);
-}
-.answers-options-frame-blue,
-.answers-options-frame-green,
-.answers-options-frame-yellow,
-.answers-options-frame-red {
-    width: 217px;
-    height: 300px;
-    border: 2px solid;
-    border-radius: 20px;
-    transition: box-shadow 0.2s ease, transform 0.2s ease; 
-}
-
-.answers-options-frame-blue:hover,
-.answers-options-frame-green:hover,
-.answers-options-frame-yellow:hover,
-.answers-options-frame-red:hover {
-    cursor: pointer; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
-    transform: scale(1.05); 
-}
-
-.answers-options-frame-blue {
-    background-color: rgba(44, 112, 175, 0.5); 
-}
-
-.answers-options-frame-green {
-    background-color: rgba(45, 157, 166, 0.5);
-}
-
-.answers-options-frame-yellow {
-    background-color: rgba(238, 169, 40, 0.5);
-}
-
-.answers-options-frame-red {
-    background-color: rgba(213, 85, 108, 0.5);
 }
