@@ -9,3 +9,6 @@ New_Quiz = flask.Blueprint(
   static_folder = "../static/new-quiz-app-static",
   static_url_path= "/static/new-quiz-app-static",
 )
+
+
+
