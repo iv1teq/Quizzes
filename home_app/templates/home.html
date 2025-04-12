@@ -1,12 +1,11 @@
 {% extends 'base.html' %}
 
-
-{% block title %} Home page {% endblock %}
-
+{% block title %}  {% endblock %}
 
 {% block head %} <link rel="stylesheet" href="{{ url_for('home_app.static', filename='css/home.css') }}">{% endblock %}
 
 {% block main %} 
+
 <div class="section">
     <div class="title-div">
         <p class="title-p">All Quizzes</p>
@@ -15,4 +14,7 @@
 
     </div>
 </div>
+
 {% endblock %}
+
+
