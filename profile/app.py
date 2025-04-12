@@ -7,5 +7,5 @@ profille = flask.Blueprint(
     import_name = "profile",
     template_folder='templates',
     static_folder=os.path.join(DIR,"static"),
-    
+    static_url_path="/profile"
 )
