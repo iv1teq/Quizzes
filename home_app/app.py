@@ -1,11 +1,8 @@
-import flask, os
-
-DIR = os.path.abspath(os.path.dirname(__file__))
+import flask
 
 home = flask.Blueprint(
     name='home_app',
     import_name='home_app',
     template_folder='templates',
-    static_folder=os.path.join(DIR, 'static'),
-    static_url_path='/static/home_app',
+    static_folder='../static/home_app'
 )
