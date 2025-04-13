@@ -1,0 +1,45 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> {% block title %} {% endblock %} </title>
+        {% block head %} {% endblock %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    </head>
+    <body>
+
+        <header>
+            <a href="/"><img class="logo-img" src="{{ url_for('static', filename='img/logo.png') }}" alt="logo image"></a>
+            {% if page == 'home' and not is_auth == True%}
+                <div class="urls">
+                    <div class="login-div">
+                        <a class="login-a" href="/login">Log in</a>
+                    </div>
+                    <div class="signup-div">
+                        <a class="signup-a" href="/registration">Sign up</a>
+                    </div>
+                </div>
+            {% elif page == 'home' and is_auth == True %}
+            {% elif page == 'profile' and not is_auth == True %}
+            {% elif page == 'profile' and is_auth == True %}
+            {% elif page == 'history' and not is_auth == True %}
+            {% elif page == 'history' and is_auth == True %}
+            {% elif page == 'authorization' and not is_auth == True %}
+            {% elif page == 'authorization' and is_auth == True %}
+            {% elif page == 'registration' and not is_auth == True %}
+            {% elif page == 'registration' and is_auth == True %}
+            {% elif page == 'new_quiz' and not is_auth == True %}
+            {% elif page == 'new_quiz' and is_auth == True %}
+
+            {% endif %}
+        </header>
+
+        <main>
+            {% block main %} {% endblock %}
+        </main>
+        
+        <footer>
+
+        </footer>
+    </body>
+</html>
