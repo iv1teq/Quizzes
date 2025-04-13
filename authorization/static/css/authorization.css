@@ -1,0 +1,76 @@
+.body {
+    height: 100%;
+    margin: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    
+
+}
+.login-window{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 580.25px;
+    height: 537.81px;
+    border: 1px solid #000000;
+    border-radius: 20px;
+    background-color: #ffffff;
+    gap: 30px;
+
+
+}
+.button{
+
+    width: 210px;
+    height: 48px;
+    border: 1px solid #000000;
+    border-radius: 5px;     
+    background-color: #FBEAD7;
+    font-size: 18px;
+}
+
+.username{
+    width: 420px;
+    height: 45px;
+    border: 1px solid #000000;
+    border-radius: 10px;
+}
+.password{
+    width: 420px;
+    height: 45px;
+    border: 1px solid #000000;
+    border-radius: 10px;
+}
+.password-confirm{
+    width: 420px;
+    height: 45px;
+    border: 1px solid #000000;
+    border-radius: 10px;
+}
+a{
+    text-decoration: underline;
+    color: #d6872c;
+    font-size: 14px;
+    font-weight: normal;
+    font-family: 'Quicksand';
+    text-align: center;
+
+}
+.text{
+    font-size: 14px;
+    font-weight: normal;
+    font-family: "Quicksand";
+    color: #d6872c;
+    text-align: center;
+}
+.title{
+    font-size: 30px;
+    font-weight: normal;
+    font-family: "Quicksand";
+    color: #000000;
+    text-align: center;
+}
