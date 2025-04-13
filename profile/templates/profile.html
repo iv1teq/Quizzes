@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
-{% block title %} Профиль {% endblock %}
+{% block title %}Профиль{% endblock %}
+
 {% block head %}
 <link rel="stylesheet" href="{{ url_for('profile.static', filename='css/profile.css') }}">
 {% endblock %}
@@ -9,19 +10,28 @@
 <div class="profile-container">
     <div class="profile-header">
         <div class="profile-info">
-            <h1>Nikita Hodovanyj</h1>
-            <a href="mailto:nikitagodovanyij@gmail.com">nikitagodovanyij@gmail.com</a>
+            <img src="{{ url_for('profile.static', filename='img/Avatar.png') }}" alt="Avatar">
+            <div class="l">
+                <h1>Anonymous user</h1>
+                <a href="mailto:anonymous@gmail.com.ua.org.com">anonymous@gmail.com.ua.org.com</a>
+            </div>
         </div>
-        <div class="quiz-count">
-            <p>0</p>
-            <span>Викторин</span>
+        <div class="quiz-stats">
+            <div class="quiz-count-box">
+                <p>0</p>
+                <span>Created quizzes</span>
+            </div>
+            <div class="quiz-count-box">
+                <p>0</p>
+                <span>Passed quizzes</span>
+            </div>
         </div>
     </div>
-    
 
     <div class="create-quiz-section">
-        <p>Ви можете створити нову вікторину зараз, легко і швидко</p>
-        <button class="create-button">Створити вікторину</button>
+        <h2>Created quizzes</h2>
+        <p>You have no quizzes completed or created</p>
+        <button class="create-button">Create a quiz</button>
     </div>
 </div>
 {% endblock %}
