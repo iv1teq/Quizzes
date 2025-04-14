@@ -5,11 +5,12 @@
     padding: 0px;
     box-sizing: border-box;
     font-family: 'Quicksand';
-    background-color: #EBEBEB;
+    background-color: #FAF1F1;
 }
 body{
     width: 100vw;
     height: 100vh;
+    overflow-x: hidden;
 }
 header{
     display: flex;
@@ -22,7 +23,7 @@ header{
     padding-bottom: 10px;
     padding-left: 17%;
     padding-right: 17%;
-
+    border-bottom: 1px solid #bbb4b4;    
 }
 .urls{
     display: flex;
@@ -41,10 +42,10 @@ header{
     align-items: center;
     width: max-content;
     height: 40px;
-    border: 1px solid #e74242;
+    border: 1px solid #2382FF;
     border-radius: 10px;
     box-shadow: 0px 0px 3px 0px rgb(0 0 0 / 40%);
-    color: #e74242;
+    color: #2382FF;
     font-size: 16px;
     text-decoration: none;
     font-weight: 500;
@@ -60,11 +61,11 @@ header{
     align-items: center;
     width: max-content;
     height: 40px;
-    border: 0px solid #e74242;
+    border: 0px solid #2382FF;
     border-radius: 10px;
     box-shadow: 0px 0px 3px 0px rgb(0 0 0 / 40%);
     color: #fff;
-    background-color: #e74242;
+    background-color: #2382FF;
     font-size: 16px;
     text-decoration: none;
     font-weight: 500;
