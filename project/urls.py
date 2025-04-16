@@ -5,7 +5,6 @@ import home_app, New_Quiz_App, registration
 from profile.app import profille
 from profile.views import show_profile_page
 
-
 from .settings import project
 
 home_app.home.add_url_rule(rule= '/', view_func=home_app.show_home_page, methods = ['POST', 'GET'])
@@ -19,12 +18,16 @@ profille.add_url_rule(rule= '/profile', view_func=show_profile_page, methods = [
 
 
 project.register_blueprint(blueprint=home_app.home)
-
 project.register_blueprint(blueprint=New_Quiz_App.New_Quiz)
-
 project.register_blueprint(registration.registration)
-
 project.register_blueprint(blueprint=profille)
+
+
+
+
+
+
+
 
 
 
