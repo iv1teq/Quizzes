@@ -75,3 +75,84 @@ header{
 .signup-a:hover{
     box-shadow: 0px 0px 0px 0px rgb(0 0 0 / 10%);
 }
+.text-decoration{
+    text-decoration: none;
+}
+.quiz-history-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.history-a{
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    height: 40px;
+    color: #fff;
+    border: 0px solid #2382FF;
+    background-color: #2382FF;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 1px 1px 3px 1px rgb(0 0 0 / 10%);
+    transition: 250ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.history-a:hover{
+    box-shadow: 0px 0px 0px 0px rgb(0 0 0 / 10%);
+}
+.new-quiz-a{
+    display: flex;
+    font-size: 16px;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    height: 40px;
+    color: #fff;
+    border: 0px solid #2382FF;
+    background-color: #2382FF;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 1px 1px 3px 1px rgb(0 0 0 / 10%);
+    transition: 250ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.new-quiz-a:hover{
+    box-shadow: 0px 0px 0px 0px rgb(0 0 0 / 10%);
+}
+.account-a{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.username-a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    transition: 250ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    padding: 0px 20px;
+}
+.username-a:hover{
+    background-color: #BDDAFF ;
+    border-radius: 8px;
+    padding: 10px 20px;
+
+}
+.log-out-a{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #000;
+    border: 1px solid black;
+    border-radius: 6px;
+    padding: 3px 5px;
+    font-size: 14px;
+}
+.log-out-img{
+    width: 13px;
+    height: 13px;
+}
