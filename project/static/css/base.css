@@ -15,14 +15,20 @@ body{
 header{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     height: 80px;
-    width: 100%;
+    width: 100vw;
+    border-bottom: 1px solid #bbb4b4;    
+}
+.header-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1420px;
+    height: 80px;
     padding-top: 10px;
     padding-bottom: 10px;
-    padding-left: 17%;
-    padding-right: 17%;
     border-bottom: 1px solid #bbb4b4;    
 }
 .urls{
