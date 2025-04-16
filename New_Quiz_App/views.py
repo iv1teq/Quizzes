@@ -8,6 +8,6 @@ def render_new_quiz_2():
     context = {'page': 'home'}
     return flask.render_template('New_Quiz_App_2.html', **context)
 
-def render_new_quiz_settigs():
+def render_new_quiz_settings():
     context = {'page': 'home'}
     return flask.render_template('New_Quiz_Settings.html', **context)
