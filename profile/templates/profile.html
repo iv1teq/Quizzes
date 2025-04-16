@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %} Профиль {% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('profile.static', filename='css/profile.css') }}">
+{% endblock %}
+
+{% block main %}
+<div class="profile-container">
+    <div class="profile-header">
+        <div class="profile-info">
+            <h1>Nikita Hodovanyj</h1>
+            <a href="mailto:nikitagodovanyij@gmail.com">nikitagodovanyij@gmail.com</a>
+        </div>
+        <div class="quiz-count">
+            <p>0</p>
+            <span>Викторин</span>
+        </div>
+    </div>
+    
+
+    <div class="create-quiz-section">
+        <p>Ви можете створити нову вікторину зараз, легко і швидко</p>
+        <button class="create-button">Створити вікторину</button>
+    </div>
+</div>
+{% endblock %}
