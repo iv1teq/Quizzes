@@ -7,43 +7,41 @@
 {% endblock %}
 
 {% block main %}
-<main class="page">
-    <div class="registration-box">
-        <h2>Registration</h2>
-        <form method="post">
-            <div class='input-pass'>
-                <label for="login">Login:</label>
-                <input type="text" id="login" name="login" class="input-field">
-            </div>
-
-            <div class='input-pass'>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" class="input-field">
-            </div>
-
-            <div class='input-pass'>
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" class="input-field">
-            </div>
-
-            <div class='input-pass'> 
-                <label for="confirm"> Confirm Password:</label>
-                <input type="password" id="confirm" name="confirm" class="input-field">
-            </div>
-            <div class="label-text">
-                <label for="login">Student or teacher</label>
+<div class="registration-box">
+    <h2>Registration</h2>
+    <form method="post">
+        <div class='input-pass'>
+            <label for="login">Login:</label>
+            <input type="text" id="login" name="login" class="input-field">
+        </div>
+        <div class='input-pass'>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" class="input-field">
+        </div>
+        <div class='input-pass'>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" class="input-field">
+        </div>
+        <div class='input-pass'> 
+            <label for="confirm"> Confirm Password:</label>
+            <input type="password" id="confirm" name="confirm" class="input-field">
+        </div>
+        <div class="label-text">
+            <label for="login">Student or teacher</label>
+        </div>
+        <div class="choose-choose">
+            <div>
+                <input type="radio" id="Student" name="Teacher" class="choose-btn">
+                <label for="Student" class="label"> Student</label>
             </div>
             <div>
-                <label for="Student" class="label"> Student</label>
-                <input type="radio" id="Student" name="Teacher" class="choose-btn">
-                <label for="Teacher" class="label"> Teacher</label>
                 <input type="radio" id="Teacher" name="Teacher" class="choose-btn">
+                <label for="Teacher" class="label"> Teacher</label>
             </div>
-                
-            <small><a>Already registered? </a><a href="/login" class=" input">Go to authorization</a></small>
-            <br><br>
-            <button type="submit" class="submit-btn">Submit</button>
-        </form>
-    </div>
-</main>
+        </div>
+            
+        <p class="input"><a class="n-underline">Already registered? </a><a href="/login">Go to authorization</a></p>
+        <button type="submit" class="submit-btn">Submit</button>
+    </form>
+</div>
 {% endblock %}
