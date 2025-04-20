@@ -6,7 +6,7 @@ project = flask.Flask(
     import_name="project",
     template_folder="templates",
     static_folder=os.path.join(DIR, 'static'),
-    instance_path= os.path.abspath(__file__ + '/..'),
+    instance_path= os.path.abspath(os.path.join(__file__, '..', '..')),
 )
 
 project.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///data.db"
