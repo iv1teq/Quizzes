@@ -11,6 +11,15 @@ def render_new_quiz_2():
     context = {'page': 'home'}
     return flask.render_template('New_Quiz_App_2.html', **context)
 
+
+def render_new_quiz_student():
+    context = {'page': 'home'}
+    return flask.render_template('New_Quiz_App_Student.html', **context)
+
+def render_new_quiz_2_student():
+    context = {'page': 'home'}
+    return flask.render_template('New_Quiz_App_Student_2.html', **context)
+
 def render_new_quiz_settigs():
     if request.method == 'POST':
         try:

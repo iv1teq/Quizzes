@@ -141,12 +141,18 @@ img {
     color: hsla(0, 0%, 0%, 0.25);
 }
 
+.answer-container {
+    position: relative;
+    width: 217px;
+    height: 300px;
+}
+
 .answers-options-frame-blue,
 .answers-options-frame-green,
 .answers-options-frame-yellow,
 .answers-options-frame-red {
-    width: 217px;
-    height: 300px;
+    width: 100%;
+    height: 100%;
     border: 2px solid;
     border-radius: 20px;
     transition: box-shadow 0.2s ease, transform 0.2s ease;
@@ -188,6 +194,35 @@ img {
 
 .answers-options-frame-red {
     background-color: rgba(213, 85, 108, 0.5);
+}
+
+.answer-checkbox {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    appearance: none;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: all 0.2s ease;
+}
+
+.answer-checkbox:checked {
+    background-color: #00C985;
+    border-color: #00C985;
+}
+
+.answer-checkbox:checked::after {
+    content: '✔';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 14px;
 }
 
 .scroll-frame {
