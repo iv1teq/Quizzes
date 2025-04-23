@@ -12,8 +12,8 @@
         <div class="profile-info">
             <img src="{{ url_for('profile.static', filename='img/Avatar.png') }}" alt="Avatar">
             <div class="l">
-                <h1>Anonymous user</h1>
-                <a href="mailto:anonymous@gmail.com.ua.org.com">anonymous@gmail.com.ua.org.com</a>
+                <h1>{{ name }}</h1>
+                <a href="mailto:{{ email }}">{{ email }}</a>
             </div>
         </div>
         <div class="quiz-stats">

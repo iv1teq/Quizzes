@@ -6,6 +6,7 @@ project.secret_key = "key"
 
 login_manager = flask_login.LoginManager(app= project)
 
+
 @login_manager.user_loader
 
 def load_user(id):
