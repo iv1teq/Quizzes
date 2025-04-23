@@ -33,15 +33,6 @@
                             <a class="log-out-a text-decoration" href="/log-out"><img class="log-out-img" src="{{ url_for('static', filename='img/log-out.png') }}"> Log out</a>
                         </div>
                     </div>
-                {% elif page == 'profile' and is_auth != True %}
-                    <div class="urls">
-                        <div class="login-div">
-                            <a class="login-a" href="/login">Log in</a>
-                        </div>
-                        <div class="signup-div">
-                            <a class="signup-a" href="/registration">Sign up</a>
-                        </div>
-                    </div>
                 {% elif page == 'profile' and is_auth == True %}
                     <div class="urls">
                         <div class="quiz-history-div">
