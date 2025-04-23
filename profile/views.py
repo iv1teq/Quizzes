@@ -6,7 +6,7 @@ def show_profile_page():
     context = {
         'page': 'profile',
         'name': current_user.name,
-        'email': current_user.email  # убедитесь, что поле email есть в вашей модели User
+        'email': current_user.email  
     }
     return flask.render_template("profile.html", **context)
 
