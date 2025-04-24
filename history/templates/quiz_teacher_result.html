@@ -1,0 +1,18 @@
+
+{% extends 'base.html' %}
+
+{% block title %} Quiz Teacher Result {% endblock %}
+
+{% block head %} <link rel="stylesheet" href="{{ url_for('history.static', filename='css/quiz_teacher_result.css') }}">{% endblock %}
+
+{% block main %} 
+ <!-- Design -->
+    <header></header>
+    <div class="section">
+        <var class="quiz-text">Quiz: Вікторина</var>
+        <div class="result-frame">
+            <div class="student-info"></div>
+            <div class="correct-answers"></div>
+        </div>
+    </div>
+{% endblock %}
