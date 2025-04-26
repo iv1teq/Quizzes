@@ -1,5 +1,6 @@
 import flask
 from profile.models import User, db
+
 def show_page_registration():
     context = {'page': 'home'}
     if flask.request.method == 'POST':
