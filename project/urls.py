@@ -1,5 +1,5 @@
 
-import home_app, New_Quiz_App, registration, authorization
+import home_app, New_Quiz_App, registration, authorization, history
 
 from profile.app import profille
 from profile.views import show_profile_page
@@ -13,10 +13,13 @@ New_Quiz_App.New_Quiz.add_url_rule(rule= '/new-quiz-2', view_func=New_Quiz_App.r
 New_Quiz_App.New_Quiz.add_url_rule(rule= '/new-quiz-3', view_func=New_Quiz_App.render_new_quiz_2, methods = ['POST', 'GET'])
 authorization.authorization.add_url_rule( rule = "/login", view_func = authorization.show_authorization, methods = ['POST', 'GET'])
 profille.add_url_rule(rule= '/profile', view_func=show_profile_page, methods = ['POST', 'GET'])
-
+history.history.add_url_rule(rule='/history', view_func=history.show_history_page, methods= ['POST', 'GET'])
+history.history.add_url_rule(rule='/history_tr', view_func=history.show_qtr_page, methods= ['POST', 'GET'])
+history.history.add_url_rule(rule='/history_sr', view_func=history.show_qsr_page, methods= ['POST', 'GET'])
 
 project.register_blueprint(blueprint=home_app.home)
 project.register_blueprint(registration.registration)
 project.register_blueprint(authorization.authorization)
 project.register_blueprint(blueprint=New_Quiz_App.New_Quiz)
 project.register_blueprint(blueprint=profille)
+project.register_blueprint(blueprint=history.history)
