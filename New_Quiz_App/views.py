@@ -46,7 +46,7 @@ def render_new_quiz_2_student():
 def render_new_quiz_settigs():
     if request.method == 'POST':
         try:
-            quiz_name = request.form['name']
+            quiz_name = request.form['quiz-name']
             filename = f"{quiz_name}.json"
 
             empty_data = []
@@ -58,9 +58,9 @@ def render_new_quiz_settigs():
             quiz = Quiz(
                 name=quiz_name,
                 json_test_data=filename,  
-                count_questions=int(request.form['count_questions']),
+                count_questions=int(request.form['num-questions']),
                 topic=request.form['topic'],
-                image=request.form['image'],
+                # image=request.form['image'],
                 description=request.form['description']
             )
             db.session.add(quiz)
