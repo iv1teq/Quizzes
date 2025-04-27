@@ -15,6 +15,13 @@ main {
     width: 100vw
     
 }
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
 .login-window{
     display: flex;
     flex-direction: column;
