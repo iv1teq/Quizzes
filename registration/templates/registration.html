@@ -7,27 +7,41 @@
 {% endblock %}
 
 {% block main %}
-<main class="page">
-    <div class="registration-box">
-        <h2>Registration</h2>
-        <form method="post">
-            <label for="login">Login:</label>
+<div class="registration-box">
+    <h2>Registration</h2>
+    <form method="post">
+        <div class='input-pass'>
+            <label for="login" class="input-title">Login:</label>
             <input type="text" id="login" name="login" class="input-field">
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" class="input-field">
-
-            <label for="password">Password:</label>
+        </div>
+        <div class='input-pass'>
+            <label for="email" class="input-title">Email:</label>
+            <input type="email" id="email" name="email" class="input-field" placeholder="example@gmail.com">
+        </div>
+        <div class='input-pass'>
+            <label for="password" class="input-title">Password:</label>
             <input type="password" id="password" name="password" class="input-field">
-
-            <label for="confirm">Password Confirm:</label>
+        </div>
+        <div class='input-pass'> 
+            <label for="confirm" class="input-title"> Confirm Password:</label>
             <input type="password" id="confirm" name="confirm" class="input-field">
-
-            <small><a href="/login">Already registered? Go to authorization</a></small>
+        </div>
+        <div class="label-text">
+            <label for="login">Student or teacher</label>
+        </div>
+        <div class="choose-choose">
+            <div>
+                <input type="radio" id="Student" name="Teacher" class="choose-btn" checked>
+                <label for="Student" class="label"> Student</label>
+            </div>
+            <div>
+                <input type="radio" id="Teacher" name="Teacher" class="choose-btn">
+                <label for="Teacher" class="label"> Teacher</label>
+            </div>
+        </div>
             
-            <br><br>
-            <button type="submit" class="submit-btn">Submit</button>
-        </form>
-    </div>
-</main>
+        <p><a class="n-underline">Already registered? </a><a href="/login" class="input">Go to authorization</a></p>
+        <button type="submit" class="submit-btn">Submit</button>
+    </form>
+</div>
 {% endblock %}

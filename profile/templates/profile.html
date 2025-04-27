@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Профиль{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('profile.static', filename='css/profile.css') }}">
+{% endblock %}
+
+{% block main %}
+<div class="profile-container">
+    <div class="profile-header">
+        <div class="profile-info">
+            <img src="{{ url_for('profile.static', filename='img/Avatar.png') }}" alt="Avatar">
+            <div class="l">
+                <h1>{{ name }}</h1>
+                <a href="mailto:{{ email }}">{{ email }}</a>
+            </div>
+        </div>
+        <div class="quiz-stats">
+            <div class="quiz-count-box">
+                <p>0</p>
+                <span>Created quizzes</span>
+            </div>
+            <div class="quiz-count-box">
+                <p>0</p>
+                <span>Passed quizzes</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="create-quiz-section">
+        <h2>Created quizzes</h2>
+        <p>You have no quizzes completed or created</p>
+        <button class="create-button">Create a quiz</button>
+    </div>
+</div>
+{% endblock %}

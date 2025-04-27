@@ -1,20 +1,76 @@
 {% extends 'base.html' %}
 
-{% block title %}  {% endblock %}
+{% block title %} Home Page {% endblock %}
 
 {% block head %} <link rel="stylesheet" href="{{ url_for('home_app.static', filename='css/home.css') }}">{% endblock %}
 
 {% block main %} 
 
-<div class="section">
-    <div class="title-div">
-        <p class="title-p">All Quizzes</p>
-    </div>
-    <div class="div-content">
 
+<div class="titles" >
+    <h1>Create and Take Quizzes</h1>
+    <h3>Build quizzes with easy to use tools and customize them to your specific needs. You can also test your knowledge on a variety of topics ranging from history and science to pop culture and current events.</h3>
+</div>
+<a class="get-started" href="/registration">Get started</a>
+<div class="benefits">
+    <div class="benefit tick">
+        <img src="{{ url_for('home_app.static', filename='img/tick.png') }}">
+        <div class="benefit-text">
+            <h4>Easy to Use</h4>
+            <p>quickly create and manage your quizzes</p>
+        </div>
+    </div>
+    <div class="benefit topic">
+        <img src="{{ url_for('home_app.static', filename='img/diverse-topics.png') }}">
+        <div class="benefit-text">
+            <h4>Diverse Topics</h4>
+            <p>Quizzes avaible on  numerous subjects</p>
+        </div>
+    </div>
+    <div class="benefit star">
+        <img src="{{ url_for('home_app.static', filename='img/star.png') }}">
+        <div class="benefit-text">
+            <h4>Instant Feedback</h4>
+            <p>Get your results immeoiately after completing</p>
+        </div>
     </div>
 </div>
-
+<div class="scroll-quizzes-name">
+    <p class="scroll-title" >All Quizzes</p>
+    <div class="scroll-quizzes">
+        
+        <div class="quiz-pcs">
+            <img src="{{ url_for('home_app.static', filename='img/quiz-img.png') }}">
+            <p>Simply quiz</p>
+        </div>
+        <div class="quiz-pcs">
+            <img src="{{ url_for('home_app.static', filename='img/quiz-img.png') }}">
+            <p>Simply quiz</p>
+        </div>
+        <div class="quiz-pcs">
+            <img src="{{ url_for('home_app.static', filename='img/quiz-img.png') }}">
+            <p>Simply quiz</p>
+        </div>
+        <div class="quiz-pcs">
+            <img src="{{ url_for('home_app.static', filename='img/quiz-img.png') }}">
+            <p>Simply quiz</p>
+        </div>
+        <div class="quiz-pcs">
+            <img src="{{ url_for('home_app.static', filename='img/quiz-img.png') }}">
+            <p>Simply quiz</p>
+        </div>
+        <div class="quiz-pcs">
+            <img src="{{ url_for('home_app.static', filename='img/quiz-img.png') }}">
+            <p>Simply quiz</p>
+        </div>
+        <div class="quiz-pcs">
+            <img src="{{ url_for('home_app.static', filename='img/quiz-img.png') }}">
+            <p>Simply quiz</p>
+        </div>
+        <div class="quiz-pcs">
+            <img src="{{ url_for('home_app.static', filename='img/quiz-img.png') }}">
+            <p>Simply quiz</p>
+        </div>
+    </div>
+</div>
 {% endblock %}
-
-

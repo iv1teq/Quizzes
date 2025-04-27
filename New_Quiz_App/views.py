@@ -46,9 +46,9 @@ def render_new_quiz_2_student():
 def render_new_quiz_settigs():
     if request.method == 'POST':
         try:
+
             quiz_name = request.form['quiz-name'] 
             filename = f"{quiz_name}.json"
-
             empty_data = []
             file_path = os.path.join('New_Quiz_App', 'static', 'quiz_data', filename)
             os.makedirs(os.path.dirname(file_path), exist_ok=True)
@@ -60,7 +60,7 @@ def render_new_quiz_settigs():
                 json_test_data=filename,  
                 count_questions=int(request.form['num-questions']),
                 topic=request.form['topic'],
-                image=request.form['image'],
+                # image=request.form['image'],
                 description=request.form['description']
             )
             db.session.add(quiz)
