@@ -209,6 +209,7 @@ input{
     padding: 5px 10px;
     color: rgba(0, 0, 0, 0.5);
     margin-left: 55px;
+    cursor: pointer;
 }
 
 .modal-overlay {
@@ -263,6 +264,7 @@ input{
     color: black;
     font-weight: 500;
     text-align: center;
+    background-color: transparent;
 }
 
 .modal-content .input-ai-promt {
@@ -271,10 +273,11 @@ input{
     text-align: center;
     border: solid 1px black;
     border-radius: 10px;
-    background-color: transparent;
+    background-color: #EDEDED;
     font-size: 20px;
     font-family: 'Quicksand', sans-serif;
     color: rgba(0, 0, 0, 0.5);
+    outline: none;
 }
 
 .modal-content .submit-ai-promt-btn {

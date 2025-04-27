@@ -21,6 +21,12 @@ $(document).ready(function() {
         $body.css('overflow', 'hidden');
     });
 
+    $('.ia-label').click(function(e) {
+        e.preventDefault();
+        $modalOverlay.addClass('active');
+        $body.css('overflow', 'hidden');
+    });
+
     $modalOverlay.click(function(e) {
         if (e.target === this) {
             closeModalWindow();
