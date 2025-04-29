@@ -321,4 +321,20 @@ background: #607C94;
 
     background: #00C985;
     border-radius: 50px;
+
+}
+
+.question-state-2{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 5px;
+    
+    width: 50px;
+    height: 50px;
+
+    background: #EF3C69;
+    border-radius: 50px;
+
 }
