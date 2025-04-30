@@ -98,13 +98,14 @@ input{
     border: 1px solid black;
     outline: none;
     font-size: 18px;
+    padding-left: 10px;
 }
 
 .image-upload {
     width: 420px; 
     height: 100px; 
     border: 1px dashed black;
-    background-color: rgba(45, 157, 166, 0.5);
+    background-color: rgb(35, 130, 255, 0.5);
     border-radius: 10px;
     display: flex;
     justify-content: center;
@@ -138,22 +139,28 @@ p{
 textarea{
     width: 420px;
     height: 45px;
+    min-width: 420px;
+    min-height: 45px;
+    max-width: 420px;
+    max-height: 80px;
     border-radius: 10px;
     border: 1px solid black;
     outline: none;
     font-size: 18px;
+    padding-left: 10px;
 }
 
 
 button{
     width: 210px;
     height: 48px;
-    background-color: #FBEAD7;
-    border: 1px solid black;
-    border-radius: 20px;
+    border: 0px solid ;
+    border-radius: 10px;     
+    background-color: #2382FF;
     font-size: 18px;
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 500;
+    color: white;
+    box-shadow: 0px 5px 10px 5px rgb(0 0 0 / 10%);
+    font-weight: bold ;
     cursor: pointer;
 }
 

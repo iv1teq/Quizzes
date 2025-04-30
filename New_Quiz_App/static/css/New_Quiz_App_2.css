@@ -95,11 +95,12 @@ img{
 }
 
 .fill-form-frame{
-    display: flex;
+    position: relative;
     width: 100%;
     height: 383px;
     border: 2px solid;
     border-radius: 20px;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -151,4 +152,141 @@ input{
     text-align: center;
     outline: none;
     color: hsla(0, 0%, 0%, 0.25);
+}
+
+.scroll-frame {
+    display: flex;
+    flex-direction: column;
+    width: 274px;
+    height: 541px;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 21px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    gap: 10px;
+}
+
+.scroll-frame div {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    width: 232px;
+    height: 65px;
+    font-size: 20px;
+    color: white;
+    font-family: 'Quicksand';
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    font-weight: bold;
+    gap: 15px;
+    padding: 25px;
+    padding-right: 15px;
+    white-space: nowrap;
+}
+
+.ai-icon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 65px;
+    height: 65px;
+    cursor: pointer;
+}
+
+.ia-label {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding-left: 20px;
+    font-size: 20px;
+    font-weight: 500;
+    font-family: 'Quicksand', sans-serif;
+    padding: 5px 10px;
+    color: rgba(0, 0, 0, 0.5);
+    margin-left: 55px;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.active {
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color: #EDEDED;
+    width: 800px;
+    height: 500px;
+    border-radius: 20px;
+    padding: 20px 30px;
+    box-shadow: 0px 5px 10px 5px rgb(0 0 0 / 10%);
+    position: relative;
+    transform: scale(0.7);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-overlay.active .modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.modal-content h1 {
+    position: absolute;
+    left: 90.5px;
+    top: 30px;
+    font-size: 28px;
+    font-family: "Quicksand", sans-serif;
+    color: black;
+    font-weight: 500;
+    text-align: center;
+}
+
+.modal-content .input-ai-promt {
+    width: 450px;
+    height: 65px;
+    text-align: center;
+    border: solid 1px black;
+    border-radius: 10px;
+    background-color: transparent;
+    font-size: 20px;
+    font-family: 'Quicksand', sans-serif;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content .submit-ai-promt-btn {
+    margin-top: 30px;
+    width: 210px;
+    height: 48px;
+    border: 0;
+    border-radius: 10px;
+    background-color: #2382FF;
+    font-size: 18px;
+    color: white;
+    box-shadow: 0px 5px 10px 5px rgb(0 0 0 / 10%);
+    font-weight: bold;
+    cursor: pointer;
 }

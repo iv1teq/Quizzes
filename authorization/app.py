@@ -7,5 +7,4 @@ authorization = flask.Blueprint(
     import_name = "authorization",
     template_folder = "templates",
     static_folder = os.path.join(DIR, 'static'),
-    static_url_path= '/auth'
-                                )
+    static_url_path= '/auth')

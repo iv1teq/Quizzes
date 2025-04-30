@@ -1,5 +1,6 @@
 import flask
 from profile.models import User, db
+
 def show_page_registration():
     context = {'page': 'home'}
     if flask.request.method == 'POST':
@@ -7,7 +8,7 @@ def show_page_registration():
             name = flask.request.form['login'],
             email = flask.request.form['email'],
             password = flask.request.form['password'],
-            is_admin = flask.request.form['Teacher']
+            is_admin = flask.request.form['Teacher'] == '1'
         )
         
         try:

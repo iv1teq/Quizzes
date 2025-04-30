@@ -4,9 +4,9 @@
 
 {% block head %}
 <link rel="stylesheet" href="{{ url_for('New_Quiz.static', filename='css/New_Quiz_App.css') }}">
+<script src="{{ url_for('New_Quiz.static', filename='js/jquery-3.7.1.min.js') }}"></script>
 <script src="{{ url_for('New_Quiz.static', filename='js/New_Quiz_App.js') }}"></script>
 {% endblock %}
-
 
 {% block main %}
 <div class="section">
@@ -17,38 +17,60 @@
         <div class="side-bar-content">
             <button class="big-choice">
                 <img src="{{ url_for('New_Quiz.static', filename='img/Big-Choice.svg') }}" alt="Big choice">
-                <p>Великий вибір</p>
+                <p>Large selection</p>
             </button>
             <button class="fill-form">
                 <img src="{{ url_for('New_Quiz.static', filename='img/Fill-Form.svg') }}" alt="Fill Form">
-                <p>Заповнити бланк</p>
+                <p>Fill form</p>
             </button>
+        
+            <div class="scroll-frame">
+                <div>#1 Fill form</div>
+                <div>#2 Large selection</div>
+                <div>#3 Fill form</div>
+                <div>#4 Large selection</div>
+                <div>#5 Fill form</div>
+                <div>#6 Large selection</div>
+                <div>#7 Fill form</div>
+                <div>#8 Large selection</div>
+                <div>#9 Fill form</div>
+                <div>#10 Large selection</div>
+            </div>
         </div>
 
         <div class="new-quiz-content">
             <div class="fill-form-frame">
-                    <input type="text" placeholder="Напишіть запитання:">
+                <img class="ai-icon" src="{{ url_for('New_Quiz.static', filename='img/ai-icon.svg') }}" alt="AI Icon"/>
+                <p class="ia-label">Generate a question</p>
+                <input type="text" placeholder="Write a question:">
             </div>
 
             <div class="answers-options-frame">
-                <button class="answers-options-frame-blue">
-
-                </button>
-            
-                <button class="answers-options-frame-green">
-
-                </button>
-            
-                <button class="answers-options-frame-yellow">
-
-                </button>
-            
-                <button class="answers-options-frame-red">
-
-                </button>
+                <div class="answer-container">
+                    <input type="text" class="answers-options-frame-blue" placeholder="Answer 1">
+                    <input type="checkbox" class="answer-checkbox">
+                </div>
+                <div class="answer-container">
+                    <input type="text" class="answers-options-frame-green" placeholder="Answer 2">
+                    <input type="checkbox" class="answer-checkbox">
+                </div>
+                <div class="answer-container">
+                    <input type="text" class="answers-options-frame-yellow" placeholder="Answer 3">
+                    <input type="checkbox" class="answer-checkbox">
+                </div>
+                <div class="answer-container">
+                    <input type="text" class="answers-options-frame-red" placeholder="Answer 4">
+                    <input type="checkbox" class="answer-checkbox">
+                </div>
             </div>
-            
         </div>
+    </div>
+</div>
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal-content">
+        <h1>Generating questions and answers on the topic</h1>
+        <input class="input-ai-promt" type="text" placeholder="Enter the topic of the question to generate">
+        <button class="submit-ai-promt-btn">Submit</button>
     </div>
 </div>
 {% endblock %}

@@ -11,19 +11,19 @@
     <h2>Registration</h2>
     <form method="post">
         <div class='input-pass'>
-            <label for="login">Login:</label>
+            <label for="login" class="input-title">Login:</label>
             <input type="text" id="login" name="login" class="input-field">
         </div>
         <div class='input-pass'>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" class="input-field">
+            <label for="email" class="input-title">Email:</label>
+            <input type="email" id="email" name="email" class="input-field" placeholder="example@gmail.com">
         </div>
         <div class='input-pass'>
-            <label for="password">Password:</label>
+            <label for="password" class="input-title">Password:</label>
             <input type="password" id="password" name="password" class="input-field">
         </div>
         <div class='input-pass'> 
-            <label for="confirm"> Confirm Password:</label>
+            <label for="confirm" class="input-title"> Confirm Password:</label>
             <input type="password" id="confirm" name="confirm" class="input-field">
         </div>
         <div class="label-text">
@@ -33,7 +33,6 @@
             <div>
                 <input type="radio" id="Student" name="Teacher" class="choose-btn" checked>
                 <label for="Student" class="label"> Student</label>
-
             </div>
             <div>
                 <input type="radio" id="Teacher" name="Teacher" class="choose-btn">
@@ -41,9 +40,8 @@
             </div>
         </div>
             
-        <p class="input"><a class="n-underline">Already registered? </a><a href="/login">Go to authorization</a></p>
+        <p><a class="n-underline">Already registered? </a><a href="/login" class="input">Go to authorization</a></p>
         <button type="submit" class="submit-btn">Submit</button>
     </form>
 </div>
-
 {% endblock %}

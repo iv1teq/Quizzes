@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %} Quizzes history {% endblock %}
+
+{% block head %} <link rel="stylesheet" href="{{ url_for('history.static', filename='css/history.css') }}">{% endblock %}
+
+{% block main %} 
+ <!-- Design -->
+
+    <header></header>
+    <div class="section">
+        <div class="title-div">
+            <var class="title-var">Complete Quizzes</var>
+        </div>
+        <div class="div-content">
+            <div class="quiz-frame-1">
+                <img class="quiz-img-1">
+                <div class="quiz_correct-frame-1"></div>
+                <var class="quiz-var-1"></var>
+            </div>
+        </div>
+    </div>
+    
+
+
+{% endblock %}
