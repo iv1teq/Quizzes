@@ -1,7 +1,8 @@
 import flask,os
 
 
-DIR  =os.path.abspath(os.path.dirname(__file__))
+DIR=os.path.abspath(os.path.dirname(__file__))
+
 profille = flask.Blueprint(
     name= "profile" ,
     import_name = "profile",
