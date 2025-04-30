@@ -60,7 +60,7 @@ def render_new_quiz_settigs():
                 json_test_data=filename,  
                 count_questions=int(request.form['num-questions']),
                 topic=request.form['topic'],
-                # image='aasdjh',
+                # image=request.form['image'],
                 description=request.form['description']
             )
 
