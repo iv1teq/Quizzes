@@ -8,7 +8,7 @@ def show_page_registration():
             name = flask.request.form['login'],
             email = flask.request.form['email'],
             password = flask.request.form['password'],
-            is_admin = flask.request.form['Teacher'] == '1'
+            is_admin=flask.request.form.get('Teacher') == '1' 
         )
         
         try:
