@@ -9,6 +9,7 @@ def show_page_registration():
             email = flask.request.form['email'],
             password = flask.request.form['password'],
             is_admin = bool(int(flask.request.form['Teacher']))
+
         )
         
         try:
