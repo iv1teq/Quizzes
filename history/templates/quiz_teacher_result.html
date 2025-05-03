@@ -7,37 +7,52 @@
 
 {% block main %} 
  <!-- Design -->
-    <header></header>
     <div class="section">
-        <var class="quiz-text">Quiz: Вікторина</var>
+        <p class="quiz-text">Quiz: Вікторина</p>
         <div class="result-frame">
             <div class="students-info">
                 <div class="student-name-accuracy">
                     <div class="name">
-                        <var class="name-text">name</var>
+                        <p class="name-text">name</p>
                     </div>
                     <div class="accuracy">
-                        <var class="accuracy-text">Accuracy</var>
+                        <p class="accuracy-text">Accuracy</p>
                     </div>
                 </div>
                 <div class="student-quiz-info-1">
                     <div class="quiz-student-name-1">
-                        <var class="quiz-student-name-text-1">Mykola</var>
+                        <p class="quiz-student-name-text-1">Mykola</p>
                     </div>
                     <div class="quiz-student-accuracy-1">
-                        <var class="quiz-student-accuracy-text-1">Accuracy</var>
+                        <p class="quiz-student-accuracy-text-1">Accuracy</p>
+                    </div>
+                </div>
+                <div class="student-quiz-info-1">
+                    <div class="quiz-student-name-1">
+                        <p class="quiz-student-name-text-1">Mykola</p>
+                    </div>
+                    <div class="quiz-student-accuracy-1">
+                        <p class="quiz-student-accuracy-text-1">Accuracy</p>
                     </div>
                 </div>
             </div>
             <div class="accuracy-info">
                 <div class="question-accuracy-1">
-                    <var class="question-number-1">Q1</var>
+                    <p class="question-number-1">Q1</p>
                     <div class="questions-accuracy-1">
-                        <img class="question-state-1"></img>
-                        <img class="question-state-2"></img>
+                        <img class="question-state-1" src="{{ url_for('history.static', filename='img/done_circle.jpg') }}">
+                        <img class="question-state-2" src="{{ url_for('history.static', filename='img/cross_circle.jpg') }}">
+                        <img class="question-state-2" src="{{ url_for('history.static', filename='img/cross_circle.jpg') }}">
                     </div>
                 </div>
-
+                <div class="question-accuracy-1">
+                    <p class="question-number-1">Q1</p>
+                    <div class="questions-accuracy-1">
+                        <img class="question-state-1" src="{{ url_for('history.static', filename='img/done_circle.jpg') }}">
+                        <img class="question-state-2" src="{{ url_for('history.static', filename='img/cross_circle.jpg') }}">
+                        <img class="question-state-1" src="{{ url_for('history.static', filename='img/done_circle.jpg') }}">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
