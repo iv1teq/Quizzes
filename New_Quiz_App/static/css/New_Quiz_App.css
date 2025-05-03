@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "Roboto";
+    src: url("../fonts/Roboto-Regular.ttf") format("truetype");
+    font-weight: 400;
+}
 main {
     display: flex;
     justify-content: center;
@@ -204,7 +209,7 @@ img {
     border-radius: 20px;
     transition: box-shadow 0.2s ease, transform 0.2s ease;
     font-size: 18px;
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Quicksand', "Roboto";
     text-align: center;
     outline: none;
     color: hsla(0, 0%, 0%, 0.75);
