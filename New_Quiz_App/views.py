@@ -54,13 +54,15 @@ def render_new_quiz_settigs():
             os.makedirs(os.path.dirname(file_path), exist_ok=True)
             with open(file_path, 'w') as f:
                 json.dump(empty_data, f)
+            
+            image =request.files['image']
 
             quiz = Quiz(
                 name=quiz_name,
                 json_test_data=filename,  
                 count_questions=int(request.form['num-questions']),
                 topic=request.form['topic'],
-                image=request.form['image'],
+                image=image.name,
                 description=request.form['description']
             )
 
