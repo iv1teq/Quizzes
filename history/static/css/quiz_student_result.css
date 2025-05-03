@@ -12,8 +12,6 @@ main{
     /* height: 800px; */
     align-items: center;
     justify-content: start;
-    border: 1px solid;
-    border-radius: 20px;
 }
 
 .quiz-text{
