@@ -223,7 +223,7 @@ img {
     border-radius: 20px;
     transition: box-shadow 0.2s ease, transform 0.2s ease;
     font-size: 18px;
-    font-family: 'Quicksand', "Roboto";
+    font-family: 'Quicksand', sans-serif;
     text-align: center;
     outline: none;
     color: hsla(0, 0%, 0%, 0.75);
