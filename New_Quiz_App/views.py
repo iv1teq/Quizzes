@@ -58,7 +58,7 @@ def render_new_quiz_settigs():
                 json_test_data=filename,
                 count_questions=int(request.form['num-questions']),
                 topic=request.form['topic'],
-                image=f"new_quiz/media/{image_filename}" if image_filename else None,
+                image=f"{image_filename}" if image_filename else None,
                 description=request.form['description']
             )
 

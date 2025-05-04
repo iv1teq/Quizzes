@@ -11,7 +11,11 @@
     <h1>Create and Take Quizzes</h1>
     <h3>Build quizzes with easy to use tools and customize them to your specific needs. You can also test your knowledge on a variety of topics ranging from history and science to pop culture and current events.</h3>
 </div>
-<a class="get-started" href="/registration">Get started</a>
+{% if is_auth == True %}
+<a class="get-started" href="/new-quiz-settings">Get started</a>
+{% elif is_auth != True %}
+<a class="get-started" href="/login">Get started</a>
+{% endif %}
 <div class="benefits">
     <div class="benefit tick">
         <img src="{{ url_for('home_app.static', filename='img/tick.png') }}">
@@ -38,39 +42,12 @@
 <div class="scroll-quizzes-name">
     <p class="scroll-title" >All Quizzes</p>
     <div class="scroll-quizzes">
-        
+        {% for quiz in quizzes %}
         <div class="quiz-pcs">
-            <img src="{{ url_for('home_app.static', filename='img/quiz-img.png') }}">
-            <p>Вікторина з математики</p>
+            <img src="{{ url_for('New_Quiz.static', filename='media/' ~ quiz.image) }}">
+            <p>{{ quiz.name }}</p>
         </div>
-        <div class="quiz-pcs">
-            <img src="{{ url_for('home_app.static', filename='img/quiz-img.png') }}">
-            <p>Вікторина з англійскої</p>
-        </div>
-        <div class="quiz-pcs">
-            <img src="{{ url_for('home_app.static', filename='img/quiz-img.png') }}">
-            <p>Simply quiz</p>
-        </div>
-        <div class="quiz-pcs">
-            <img src="{{ url_for('home_app.static', filename='img/quiz-img.png') }}">
-            <p>Simply quiz</p>
-        </div>
-        <div class="quiz-pcs">
-            <img src="{{ url_for('home_app.static', filename='img/quiz-img.png') }}">
-            <p>Simply quiz</p>
-        </div>
-        <div class="quiz-pcs">
-            <img src="{{ url_for('home_app.static', filename='img/quiz-img.png') }}">
-            <p>Simply quiz</p>
-        </div>
-        <div class="quiz-pcs">
-            <img src="{{ url_for('home_app.static', filename='img/quiz-img.png') }}">
-            <p>Simply quiz</p>
-        </div>
-        <div class="quiz-pcs">
-            <img src="{{ url_for('home_app.static', filename='img/quiz-img.png') }}">
-            <p>Simply quiz</p>
-        </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}

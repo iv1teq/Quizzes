@@ -1,10 +1,9 @@
-
-
 import home_app, New_Quiz_App, registration, authorization, history
 
 from profile.app import profille
 from profile.views import show_profile_page
 from profile.views import logout
+
 
 from .settings import project
 
