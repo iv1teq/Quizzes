@@ -28,11 +28,6 @@
     font-weight: 200;
     unicode-range: 'U+0400-04FF', 'U+0500-052F', 'U+2DE0-2DFF';
 }
-@font-face {
-    font-family: "Roboto";
-    src: url("../fonts/Roboto-Regular.ttf") format("truetype");
-    font-weight: 400;
-}
 *{
     margin: 0px;
     padding: 0px;
