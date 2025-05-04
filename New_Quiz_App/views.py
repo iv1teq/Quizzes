@@ -1,11 +1,11 @@
+import os, json
 from flask import request, render_template, redirect, url_for
 from .models import Quiz
 from project.settings import db
 from flask_login import login_required, current_user
-import os
-import json
+from werkzeug.utils import secure_filename
 
-# Для учителей
+DIR = os.path.dirname(os.path.abspath(__file__))
 
 @login_required
 def render_new_quiz():
@@ -27,11 +27,14 @@ def render_new_quiz_settigs():
 
     if request.method == 'POST':
         try:
-            quiz_name = request.form['quiz-name']
+
+            quiz_name = request.form['quiz-name'] 
             filename = f"{quiz_name}.json"
             empty_data = []
 
-            file_path = os.path.join('New_Quiz_App', 'static', 'quiz_data', filename)
+            
+            file_path = os.path.join(DIR, 'static', 'quiz_data', filename)
+
             os.makedirs(os.path.dirname(file_path), exist_ok=True)
 
             with open(file_path, 'w') as f:
@@ -39,12 +42,23 @@ def render_new_quiz_settigs():
             
             image =request.files['image']
 
+            
+            image = request.files.get('image')
+            image_filename = None
+            if image and image.filename != '':
+                image_filename = secure_filename(image.filename)
+                media_folder = os.path.join(DIR, 'static', 'media')
+                os.makedirs(media_folder, exist_ok=True)
+                image_path = os.path.join(media_folder, image_filename)
+                image.save(image_path)
+
+            
             quiz = Quiz(
                 name=quiz_name,
                 json_test_data=filename,
                 count_questions=int(request.form['num-questions']),
                 topic=request.form['topic'],
-                image=image.name,
+                image=f"new_quiz/media/{image_filename}" if image_filename else None,
                 description=request.form['description']
             )
 
@@ -54,14 +68,13 @@ def render_new_quiz_settigs():
             return redirect(url_for('New_Quiz.render_new_quiz'))
 
         except Exception as e:
-            print(e)
+            print(f"Ошибка: {e}")
 
     context = {
         'page': 'home',
         'is_auth': current_user.is_authenticated,
         'name': current_user.name
     }
-
     return render_template('New_Quiz_Settings.html', **context)
 
 

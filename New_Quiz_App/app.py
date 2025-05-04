@@ -8,6 +8,7 @@ New_Quiz = flask.Blueprint(
   template_folder = "templates",
   static_folder = os.path.join(DIR, 'static'),
   static_url_path= "/new_quiz",
+  
 )
 
 
