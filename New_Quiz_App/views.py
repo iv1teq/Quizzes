@@ -5,6 +5,7 @@ import flask
 import os
 import json
 from flask_login import login_required, current_user
+from werkzeug.utils import secure_filename
 
 @login_required
 def render_new_quiz():
@@ -42,25 +43,45 @@ def render_new_quiz_2_student():
     }
     return flask.render_template('New_Quiz_App_Student_2.html', **context)
 
+
+
+
+
+
+DIR = os.path.dirname(os.path.abspath(__file__))
+
+
 @login_required
 def render_new_quiz_settigs():
     if request.method == 'POST':
         try:
-
             quiz_name = request.form['quiz-name'] 
             filename = f"{quiz_name}.json"
             empty_data = []
-            file_path = os.path.join('New_Quiz_App', 'static', 'quiz_data', filename)
+
+            
+            file_path = os.path.join(DIR, 'static', 'quiz_data', filename)
             os.makedirs(os.path.dirname(file_path), exist_ok=True)
             with open(file_path, 'w') as f:
                 json.dump(empty_data, f)
 
+            
+            image = request.files.get('image')
+            image_filename = None
+            if image and image.filename != '':
+                image_filename = secure_filename(image.filename)
+                media_folder = os.path.join(DIR, 'static', 'media')
+                os.makedirs(media_folder, exist_ok=True)
+                image_path = os.path.join(media_folder, image_filename)
+                image.save(image_path)
+
+            
             quiz = Quiz(
                 name=quiz_name,
-                json_test_data=filename,  
+                json_test_data=filename,
                 count_questions=int(request.form['num-questions']),
                 topic=request.form['topic'],
-                image=request.form['image'],
+                image=f"new_quiz/media/{image_filename}" if image_filename else None,
                 description=request.form['description']
             )
 
@@ -70,7 +91,7 @@ def render_new_quiz_settigs():
             return redirect(url_for('New_Quiz.render_new_quiz'))
 
         except Exception as e:
-            print(e)
+            print(f"Ошибка: {e}")
 
     context = {
         'page': 'home',
