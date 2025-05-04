@@ -18,7 +18,7 @@ main{
     width: 728px;
     height: 63px;
     
-    font-family: 'Quicksand';
+    font-family: 'Quicksand', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 50px;
@@ -99,7 +99,7 @@ main{
     width: 281px;
     height: 44px;
     
-    font-family: 'Quicksand';
+    font-family: 'Quicksand', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 35px;
@@ -114,7 +114,7 @@ main{
     width: 499px;
     height: 38px;
     
-    font-family: 'Quicksand';
+    font-family: 'Quicksand', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 30px;
@@ -166,7 +166,7 @@ main{
     width: 10px;
     height: 30px;
     
-    font-family: 'Quicksand';
+    font-family: 'Quicksand', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
@@ -210,7 +210,7 @@ main{
     width: 497px;
     height: 90px;
     
-    font-family: 'Quicksand';
+    font-family: 'Quicksand', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
@@ -255,7 +255,7 @@ height: 30px;
 width: 130px;
 height: 30px;
 
-font-family: 'Quicksand';
+font-family: 'Quicksand', sans-serif;
 font-style: normal;
 font-weight: 700;
 font-size: 24px;
@@ -268,7 +268,7 @@ color: #000000;
 width: 66px;
 height: 30px;
 
-font-family: 'Quicksand';
+font-family: 'Quicksand', sans-serif;
 font-style: normal;
 font-weight: 700;
 font-size: 24px;
@@ -297,7 +297,7 @@ order: 1;
     width: 120px;
     height: 30px;
     
-    font-family: 'Quicksand';
+    font-family: 'Quicksand', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
@@ -311,7 +311,7 @@ order: 1;
     width: 20px;
     height: 30px;
     
-    font-family: 'Quicksand';
+    font-family: 'Quicksand', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
@@ -362,7 +362,7 @@ order: 1;
     width: 10px;
     height: 30px;
     
-    font-family: 'Quicksand';
+    font-family: 'Quicksand', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
@@ -406,7 +406,7 @@ order: 1;
     width: 497px;
     height: 90px;
     
-    font-family: 'Quicksand';
+    font-family: 'Quicksand', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
@@ -451,7 +451,7 @@ align-self: stretch;
     width: 573px;
     height: 30px;
     
-    font-family: 'Quicksand';
+    font-family: 'Quicksand', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
@@ -516,7 +516,7 @@ border-radius: 50px;
 width: 18px;
 height: 25px;
 
-font-family: 'Quicksand';
+font-family: 'Quicksand', sans-serif;
 font-style: normal;
 font-weight: 700;
 font-size: 20px;
@@ -566,7 +566,7 @@ border-radius: 50px;
 width: 55px;
 height: 25px;
 
-font-family: 'Quicksand';
+font-family: 'Quicksand', sans-serif;
 font-style: normal;
 font-weight: 700;
 font-size: 20px;
@@ -615,7 +615,7 @@ height: 30px;
 width: 89px;
 height: 25px;
 
-font-family: 'Quicksand';
+font-family: 'Quicksand', sans-serif;
 font-style: normal;
 font-weight: 700;
 font-size: 20px;
@@ -664,7 +664,7 @@ height: 30px;
 width: 77px;
 height: 25px;
 
-font-family: 'Quicksand';
+font-family: 'Quicksand', sans-serif;
 font-style: normal;
 font-weight: 700;
 font-size: 20px;
@@ -716,7 +716,7 @@ order: 1;
     width: 10px;
     height: 30px;
     
-    font-family: 'Quicksand';
+    font-family: 'Quicksand', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
@@ -760,7 +760,7 @@ order: 1;
     width: 497px;
     height: 90px;
     
-    font-family: 'Quicksand';
+    font-family: 'Quicksand', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
@@ -806,7 +806,7 @@ height: 30px;
 width: 130px;
 height: 30px;
 
-font-family: 'Quicksand';
+font-family: 'Quicksand', sans-serif;
 font-style: normal;
 font-weight: 700;
 font-size: 24px;
@@ -819,7 +819,7 @@ color: #000000;
 width: 66px;
 height: 30px;
 
-font-family: 'Quicksand';
+font-family: 'Quicksand', sans-serif;
 font-style: normal;
 font-weight: 700;
 font-size: 24px;
@@ -848,7 +848,7 @@ order: 1;
 width: 120px;
 height: 30px;
 
-font-family: 'Quicksand';
+font-family: 'Quicksand', sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: 24px;
@@ -862,7 +862,7 @@ color: #000000;
 width: 20px;
 height: 30px;
 
-font-family: 'Quicksand';
+font-family: 'Quicksand', sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: 24px;
@@ -913,7 +913,7 @@ order: 1;
     width: 10px;
     height: 30px;
     
-    font-family: 'Quicksand';
+    font-family: 'Quicksand', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
@@ -957,7 +957,7 @@ order: 1;
     width: 497px;
     height: 90px;
     
-    font-family: 'Quicksand';
+    font-family: 'Quicksand', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
@@ -1002,7 +1002,7 @@ align-self: stretch;
     width: 573px;
     height: 30px;
     
-    font-family: 'Quicksand';
+    font-family: 'Quicksand', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
@@ -1067,7 +1067,7 @@ border-radius: 50px;
 width: 18px;
 height: 25px;
 
-font-family: 'Quicksand';
+font-family: 'Quicksand', sans-serif;
 font-style: normal;
 font-weight: 700;
 font-size: 20px;
@@ -1123,7 +1123,7 @@ border-radius: 50px;
 width: 55px;
 height: 25px;
 
-font-family: 'Quicksand';
+font-family: 'Quicksand', sans-serif;
 font-style: normal;
 font-weight: 700;
 font-size: 20px;
@@ -1172,7 +1172,7 @@ height: 30px;
 width: 89px;
 height: 25px;
 
-font-family: 'Quicksand';
+font-family: 'Quicksand', sans-serif;
 font-style: normal;
 font-weight: 700;
 font-size: 20px;
@@ -1210,7 +1210,7 @@ order: 1;
 width: 77px;
 height: 25px;
 
-font-family: 'Quicksand';
+font-family: 'Quicksand', sans-serif;
 font-style: normal;
 font-weight: 700;
 font-size: 20px;

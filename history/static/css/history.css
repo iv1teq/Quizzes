@@ -32,7 +32,7 @@ main{
     width: 300px;
     height: 40px;
 
-    font-family: 'Quicksand';
+    font-family: 'Quicksand', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 34px;
@@ -95,7 +95,7 @@ main{
 width: 260px;
 height: 33px;
 
-font-family: 'Quicksand';
+font-family: 'Quicksand', sans-serif;
 font-style: normal;
 font-weight: 500;
 font-size: 20px;
@@ -151,7 +151,7 @@ background: #FFFFFF;
 width: 260px;
 height: 33px;
 
-font-family: 'Quicksand';
+font-family: 'Quicksand', sans-serif;
 font-style: normal;
 font-weight: 500;
 font-size: 20px;
