@@ -14,7 +14,6 @@ New_Quiz = Blueprint(
 QUIZ_SAVE_DIR = os.path.join(DIR, 'static', 'quiz_data')
 os.makedirs(QUIZ_SAVE_DIR, exist_ok=True)
 
-@New_Quiz.route('/save_quiz', methods=['POST'])
 def save_quiz():
     data = request.get_json()
     save_path = os.path.join(QUIZ_SAVE_DIR, 'quiz_data.json')
