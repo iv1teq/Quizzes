@@ -8,7 +8,7 @@ from werkzeug.utils import secure_filename
 DIR = os.path.dirname(os.path.abspath(__file__))
 
 @login_required
-def render_new_quiz(name):
+def render_new_quiz():
     if not current_user.is_admin:
         return render_template('error_403.html')
 
