@@ -9,8 +9,8 @@ import json
 
 @login_required
 def render_new_quiz():
-    if not current_user.is_admin:
-        return render_template('error_403.html')
+    # if not current_user.is_admin:
+    #     return render_template('error_403.html')
 
     context = {
         'page': 'home',
