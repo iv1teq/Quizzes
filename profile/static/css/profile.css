@@ -1,0 +1,133 @@
+/* .profile-container{
+    width: 1400px;
+    height: 612px;
+    
+    background-color: #5c748f;
+    text-align: center;
+} */
+
+.profile-container {
+    width: 1400px;
+    height: 612px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #5c748f;
+    border-radius: 60px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    box-shadow: 0px 5px 10px 5px rgb(0 0 0 / 10%);
+}
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    background-color: #5c748f;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: #5c748f;
+}
+.profile-info img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+.profile-info h1 {
+    color: white;
+    width: 281px;
+    height: 44px;
+    margin: 0;
+    font-size: 35px;
+    background-color: #5c748f;
+}
+.profile-info a {
+    color: white;
+    text-decoration: underline;
+    font-size: 24px;
+    background-color: #5c748f;
+}
+.l{
+    background-color: #5c748f;
+}
+
+.quiz-count-box {
+    width: 241px;
+    height: 106px;
+    background-color: #5c748f;
+    border: 2px solid white;
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin: 0 5px;
+    }
+.quiz-stats{
+    
+    background-color: #5c748f;
+    display: flex;
+    flex-direction: row;
+}
+.quiz-count-box p{
+    font-size: 30px;
+    color: white;
+
+    background-color: #5c748f;
+
+}
+.quiz-count-box span{
+    font-size: 24px;
+    color: white;
+    background-color: #5c748f;
+
+}
+
+
+
+.create-quiz-section {
+    margin-top: 90px;
+    color: white;
+    background-color: #5c748f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.create-quiz-section h2 {
+    font-size: 28px;
+    margin-bottom: 60px;
+    background-color: #5c748f;
+}
+
+.create-quiz-section p {
+    font-size: 18px;
+    margin-bottom: 60px;
+    color: white;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 12px;
+    padding: 10px 25px;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.create-button {
+    width: 202px;
+    height: 45px;
+    padding: 12px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 20px;
+    background: linear-gradient(to right, #4d90fe, #357ae8);
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.create-button:hover {
+    background: linear-gradient(to right, #357ae8, #2a65c8);
+    transform: translateY(-2px);
+}

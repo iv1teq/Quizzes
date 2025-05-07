@@ -7,31 +7,147 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
     </head>
     <body>
-
         <header>
-            <a href="/"><img class="logo-img" src="{{ url_for('static', filename='img/logo.png') }}" alt="logo image"></a>
-            {% if page == 'home' and not is_auth == True%}
-            <div class="urls">
-                <div class="login-div">
-                    <a class="login-a" href="/login">Log in</a>
+            <div class="header-content" >
+                <a href="/"><img class="logo-img" src="{{ url_for('static', filename='img/logo.png') }}" alt="logo image"></a>
+                {% if page == 'home' and is_auth != True %}
+                    <div class="urls">
+                        <div class="login-div">
+                            <a class="login-a" href="/login">Log in</a>
+                        </div>
+                        <div class="signup-div">
+                            <a class="signup-a" href="/registration">Sign up</a>
+                        </div>
+                    </div>
+                {% elif page == 'home' and is_auth == True %}
+                    <div class="urls">
+                        <div class="quiz-history-div">
+                            <a class="history-a text-decoration" href="/history">Quiz History</a>
+                        </div>
+                        <div class="new-quiz-div">
+                            <a class="new-quiz-a text-decoration" href="/new-quiz-settings">New Quiz</a>
+                        </div>
+                        <div class="account-a">
+                            <a class="username-a text-decoration" href="/profile">{{ name }}</a>
+                            <a class="log-out-a text-decoration" href="/log-out"><img class="log-out-img" src="{{ url_for('static', filename='img/log-out.png') }}"> Log out</a>
+                        </div>
+                    </div>
+                {% elif page == 'profile' %}
+                    <div class="urls">
+                        <div class="quiz-history-div">
+                            <a class="history-a text-decoration" href="/history">Quiz History</a>
+                        </div>
+                        <div class="new-quiz-div">
+                            <a class="new-quiz-a text-decoration" href="/new-quiz ">New Quiz</a>
+                        </div>
+                        <div class="account-a">
+                            <a class="username-a text-decoration" href="/profile">{{ name }}</a>
+                            <a class="log-out-a text-decoration" href="/log-out"><img class="log-out-img" src="{{ url_for('static', filename='img/log-out.png') }}"> Log out</a>
+                        </div>
+                    </div>
+                {% elif page == 'history' and is_auth != True %}
+                <div class="urls">
+                    <div class="login-div">
+                        <a class="login-a" href="/login">Log in</a>
+                    </div>
+                    <div class="signup-div">
+                        <a class="signup-a" href="/registration">Sign up</a>
+                    </div>
                 </div>
-                <div class="signup-div">
-                    <a class="signup-a" href="/registration">Sign up</a>
-                </div>
+                {% elif page == 'history' and is_auth == True %}
+                    <div class="urls">
+                        <div class="quiz-history-div">
+                            <a class="history-a text-decoration" href="/history">Quiz History</a>
+                        </div>
+                        <div class="new-quiz-div">
+                            <a class="new-quiz-a text-decoration" href="/new-quiz ">New Quiz</a>
+                        </div>
+                        <div class="account-a">
+                            <a class="username-a text-decoration" href="/profile">{{ name }}</a>
+                            <a class="log-out-a text-decoration" href="/log-out"><img class="log-out-img" src="{{ url_for('static', filename='img/log-out.png') }}"> Log out</a>
+                        </div>
+                    </div>
+                {% elif page == 'authorization' and is_auth != True %}
+                    <div class="urls">
+                        <div class="login-div">
+                            <a class="login-a" href="/login">Log in</a>
+                        </div>
+                        <div class="signup-div">
+                            <a class="signup-a" href="/registration">Sign up</a>
+                        </div>
+                    </div>
+                {% elif page == 'authorization' and is_auth == True %}
+                    <div class="urls">
+                        <div class="quiz-history-div">
+                            <a class="history-a text-decoration" href="/history">Quiz History</a>
+                        </div>
+                        <div class="new-quiz-div">
+                            <a class="new-quiz-a text-decoration" href="/new-quiz ">New Quiz</a>
+                        </div>
+                        <div class="account-a">
+                            <a class="username-a text-decoration" href="/profile">{{ name }}</a>
+                            <a class="log-out-a text-decoration" href="/log-out"><img class="log-out-img" src="{{ url_for('static', filename='img/log-out.png') }}"> Log out</a>
+                        </div>
+                    </div>
+                {% elif page == 'registration' and is_auth != True %}
+                    <div class="urls">
+                        <div class="login-div">
+                            <a class="login-a" href="/login">Log in</a>
+                        </div>
+                        <div class="signup-div">
+                            <a class="signup-a" href="/registration">Sign up</a>
+                        </div>
+                    </div>
+                {% elif page == 'registration' and is_auth == True %}
+                    <div class="urls">
+                        <div class="quiz-history-div">
+                            <a class="history-a text-decoration" href="/history">Quiz History</a>
+                        </div>
+                        <div class="new-quiz-div">
+                            <a class="new-quiz-a text-decoration" href="/new-quiz ">New Quiz</a>
+                        </div>
+                        <div class="account-a">
+                            <a class="username-a text-decoration" href="/profile">{{ name }}</a>
+                            <a class="log-out-a text-decoration" href="/log-out"><img class="log-out-img" src="{{ url_for('static', filename='img/log-out.png') }}"> Log out</a>
+                        </div>
+                    </div>
+                {% elif page == 'new_quiz' and is_auth != True %}
+                    <div class="urls">
+                        <div class="login-div">
+                            <a class="login-a" href="/login">Log in</a>
+                        </div>
+                        <div class="signup-div">
+                            <a class="signup-a" href="/registration">Sign up</a>
+                        </div>
+                    </div>
+                {% elif page == 'new_quiz' and is_auth == True and is_admin == True %}
+                    <div class="urls">
+                        <div class="quiz-history-div">
+                            <a class="history-a text-decoration" href="/history">Quiz History</a>
+                        </div>
+                        <div class="new-quiz-div">
+                            <a class="new-quiz-a text-decoration" href="/new-quiz ">New Quiz</a>
+                        </div>
+                        <div class="account-a">
+                            <a class="username-a text-decoration" href="/profile">{{ name }}</a>
+                            <a class="log-out-a text-decoration" href="/log-out"><img class="log-out-img" src="{{ url_for('static', filename='img/log-out.png') }}"> Log out</a>
+                        </div>
+                    </div>
+                {% elif page == 'new_quiz' and is_auth == True and is_admin != True %}
+                    <div class="urls">
+                        <div class="quiz-history-div">
+                            <a class="history-a text-decoration" href="/history">Quiz History</a>
+                        </div>
+                        <div class="new-quiz-div">
+                            <a class="new-quiz-a text-decoration" href="/new-quiz ">New Quiz</a>
+                        </div>
+                        <div class="account-a">
+                            <a class="username-a text-decoration" href="/profile">{{ name }}</a>
+                            <a class="log-out-a text-decoration" href="/log-out"><img class="log-out-img" src="{{ url_for('static', filename='img/log-out.png') }}"> Log out</a>
+                        </div>
+                    </div>
+                {% endif %}
             </div>
-            {% elif page == 'home' and is_auth == True %}
-            {% elif page == 'profile' and not is_auth == True %}
-            {% elif page == 'profile' and is_auth == True %}
-            {% elif page == 'history' and not is_auth == True %}
-            {% elif page == 'history' and is_auth == True %}
-            {% elif page == 'authorization' and not is_auth == True %}
-            {% elif page == 'authorization' and is_auth == True %}
-            {% elif page == 'registration' and not is_auth == True %}
-            {% elif page == 'registration' and is_auth == True %}
-            {% elif page == 'new_quiz' and not is_auth == True %}
-            {% elif page == 'new_quiz' and is_auth == True %}
-
-            {% endif %}
         </header>
 
         <main>

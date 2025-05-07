@@ -94,20 +94,16 @@ main{
 .quiz-var-1{
 width: 260px;
 height: 33px;
-
 font-family: 'Quicksand', sans-serif;
 font-style: normal;
 font-weight: 500;
+
 font-size: 20px;
 line-height: 20px;
 text-align: center;
-
 color: #000000;
-
 order: 1;
-
 background: #FFFFFF;
-
 }
 
 .quiz-frame-2{
