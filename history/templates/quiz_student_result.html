@@ -11,10 +11,10 @@
         <div class="result-frame">
             <div class="student-info">
                 <div class="profile">
-                    <img class="img-profile">
+                    <img class="img-profile" src="{{ url_for('history.static', filename='img/Avatar.jpg') }}">
                     <div class="username-email-frame">
-                        <p class="username">username</p>
-                        <p class="email-user">email</p>
+                        <p class="username">{{ name }}</p>
+                        <a href="mailto:{{ email }}" class="email-user">{{ email }}</a>
                     </div>
                 </div>
             </div>

@@ -75,9 +75,12 @@ main{
     background: #607C94;
 }
 
-.img_profile{
+.img-profile{
     width: 120px;
     height: 120px;
+    
+    background:#607C94;
+    border-radius: 60px;
 }
 
 .username-email-frame{
