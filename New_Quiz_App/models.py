@@ -8,3 +8,5 @@ class Quiz(db.Model):
     topic = db.Column(db.String(50), nullable=False)
     image = db.Column(db.String(255), nullable=True)
     description = db.Column(db.Text, nullable=False)
+    owner = db.Column(db.Integer, nullable=False)
+
