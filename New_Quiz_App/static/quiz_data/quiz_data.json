@@ -1,14 +1,21 @@
 {
-  "quetion1": {
-    "type" : "largeselection",
-    "question": "asghjdfjkh",
-    "answer" : [
-      "id", "fill", "form"
-    ]
-  },
-  "quetion2": {
-    "type" : "fillform",
-    "question": "asghjdfjkh",
-    "answer" : "id"
-  }
+  "question": "No",
+  "answers": [
+    {
+      "text": "8776",
+      "correct": false
+    },
+    {
+      "text": "345",
+      "correct": true
+    },
+    {
+      "text": "8765",
+      "correct": true
+    },
+    {
+      "text": "0",
+      "correct": true
+    }
+  ]
 }
