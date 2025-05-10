@@ -1,21 +1,24 @@
-{
-  "question": "No",
-  "answers": [
-    {
-      "text": "8776",
-      "correct": false
-    },
-    {
-      "text": "345",
-      "correct": true
-    },
-    {
-      "text": "8765",
-      "correct": true
-    },
-    {
-      "text": "0",
-      "correct": true
-    }
-  ]
-}
+[
+  {
+    "mode": "large-selection",
+    "question": "asdfjhgagjhsdf",
+    "answers": [
+      {
+        "text": "asdhgkf",
+        "correct": true
+      },
+      {
+        "text": "adsfg",
+        "correct": false
+      },
+      {
+        "text": "sdfh",
+        "correct": false
+      },
+      {
+        "text": "hsdfg",
+        "correct": true
+      }
+    ]
+  }
+]
