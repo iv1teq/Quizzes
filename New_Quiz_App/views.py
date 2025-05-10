@@ -55,7 +55,7 @@ def render_new_quiz_settigs():
     context = {
         'page': 'home',
         'is_auth': current_user.is_authenticated,
-        'name': current_user.name
+        'name': current_user.id
     }
     return render_template('New_Quiz_Settings.html', **context)
 

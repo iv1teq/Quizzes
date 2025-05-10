@@ -4,6 +4,7 @@ main {
     align-items: center;
     width: 100vw;
     font-family: 'Quicksand', sans-serif;
+    margin-top: 10px;
 }
 
 .section {
@@ -133,24 +134,14 @@ img {
     height: 80px;
 }
 
-.fill-form-frame {
+.fill-form-frame,
+.fill-form-frame-2 {
     position: relative;
     width: 100%;
     height: 383px;
     border: 2px solid;
     border-radius: 20px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Quicksand', sans-serif;
-}
-
-.fill-form-frame-2 {
-    display: flex;
-    width: 100%;
-    height: 383px;
-    border: 2px solid;
-    border-radius: 20px;
     justify-content: center;
     align-items: center;
     gap: 10px;
@@ -324,26 +315,26 @@ img {
     white-space: nowrap;
 }
 
-.ai-icon {
+.ai-container {
     position: absolute;
     top: 10px;
     left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ai-icon {
     width: 65px;
     height: 65px;
     cursor: pointer;
 }
 
 .ia-label {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    padding-left: 20px;
     font-size: 20px;
     font-weight: 500;
     font-family: 'Quicksand', sans-serif;
-    padding: 5px 10px;
     color: rgba(0, 0, 0, 0.5);
-    margin-left: 55px;
     cursor: pointer;
 }
 

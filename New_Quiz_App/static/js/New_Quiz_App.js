@@ -1,77 +1,85 @@
-$(function () {
-    const bigChoiceBtn = $('.big-choice');
-    const fillFormBtn = $('.fill-form');
-    const largeView = $('.large-selection-view');
-    const formView = $('.fill-form-view');
-    const modal = $('#modalOverlay');
-    const body = $('body');
-
-
-    bigChoiceBtn.click(function () {
-        bigChoiceBtn.addClass('active');
-        fillFormBtn.removeClass('active');
-        largeView.show();
-        formView.hide();
+$(document).ready(function () {
+    $('.big-choice').click(function () {
+        $('.big-choice').addClass('active');
+        $('.fill-form').removeClass('active');
+        $('.large-selection-view').show();
+        $('.fill-form-view').hide();
     });
 
-    fillFormBtn.click(function () {
-        fillFormBtn.addClass('active');
-        bigChoiceBtn.removeClass('active');
-        formView.show();
-        largeView.hide();
+    $('.fill-form').click(function () {
+        $('.fill-form').addClass('active');
+        $('.big-choice').removeClass('active');
+        $('.fill-form-view').show();
+        $('.large-selection-view').hide();
     });
 
 
-    $('.ai-icon, .ia-label').click(function (e) {
-        e.preventDefault();
-        modal.addClass('active');
-        body.css('overflow', 'hidden');
+    $('.ai-icon, .ia-label').click(function () {
+        $('#modalOverlay').addClass('active');
+        $('body').css('overflow', 'hidden');
     });
 
-    modal.click(function (e) {
-        if (e.target === modal[0]) {
-            modal.removeClass('active');
-            body.css('overflow', '');
+
+    $('#modalOverlay').click(function (e) {
+        if (e.target === this) {
+            $(this).removeClass('active');
+            $('body').css('overflow', '');
         }
     });
-
 
     $(document).keydown(function (e) {
-        if (e.key === 'Escape' && modal.hasClass('active')) {
-            modal.removeClass('active');
-            body.css('overflow', '');
+        if (e.key === 'Escape') {
+            $('#modalOverlay').removeClass('active');
+            $('body').css('overflow', '');
         }
     });
 
-
     $('.submit-ai-promt-btn').click(function () {
-        modal.removeClass('active');
-        body.css('overflow', '');
+        $('#modalOverlay').removeClass('active');
+        $('body').css('overflow', '');
     });
 
-    bigChoiceBtn.addClass('active');
-    formView.hide();
 
+    $('.enter-btn').click(function () {
+        let quizData = { mode: '', question: '', answers: [] };
 
-    $('.scroll-frame').click(function () {
-        const questionInput = $('.large-selection-view input[type="text"]')[0];
-        const question = questionInput ? questionInput.value : '';
-        const answers = [];
+        if ($('.large-selection-view').is(':visible')) {
+            quizData.mode = 'large-selection';
+            quizData.question = $('.large-selection-view .question-input').val().trim();
 
-        $('.answers-options-frame .answer-container').each(function () {
-            const textInput = $(this).find('input[type="text"]')[0];
-            const text = textInput ? textInput.value : '';
-            const isCorrect = $(this).find('input[type="checkbox"]').is(':checked');
-            if (text) {
-                answers.push({ text: text, correct: isCorrect });
+            $('.answers-options-frame .answer-container').each(function () {
+                let answerText = $(this).find('input[type="text"]').val().trim();
+                if (answerText) {
+                    quizData.answers.push({
+                        text: answerText,
+                        correct: $(this).find('.answer-checkbox').prop('checked'),
+                    });
+                }
+            });
+        } else {
+            quizData.mode = 'fill-form';
+            quizData.question = $('.fill-form-view .question-input').val().trim();
+            let answerText = $('.fill-form-view .answer-input').val().trim();
+            if (answerText) {
+                quizData.answers.push({ text: answerText, correct: true });
             }
-        });
+        }
+
 
         $.ajax({
             url: '/save_quiz',
             method: 'POST',
             contentType: 'application/json',
-            data: JSON.stringify({ question: question, answers: answers }),
+            data: JSON.stringify(quizData),
+            success: function () {
+                clearForm();
+            },
         });
     });
+
+
+    function clearForm() {
+        $('input[type="text"]').val('');
+        $('input[type="checkbox"]').prop('checked', false);
+    }
 });
