@@ -4,6 +4,7 @@ from .models import Quiz
 from project.settings import db
 from flask_login import login_required, current_user
 from werkzeug.utils import secure_filename
+from profile.models import User
 
 DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -31,6 +32,7 @@ def render_new_quiz_settigs():
             quiz_name = request.form['quiz-name'] 
             filename = f"{quiz_name}.json"
             empty_data = []
+            
 
             
             file_path = os.path.join(DIR, 'static', 'quiz_data', filename)
@@ -52,14 +54,15 @@ def render_new_quiz_settigs():
                 image_path = os.path.join(media_folder, image_filename)
                 image.save(image_path)
 
-            
+            id_user = User.get_id(current_user)
             quiz = Quiz(
                 name=quiz_name,
                 json_test_data=filename,
                 count_questions=int(request.form['num-questions']),
                 topic=request.form['topic'],
                 image=f"{image_filename}" if image_filename else None,
-                description=request.form['description']
+                description=request.form['description'],
+                owner = id_user
             )
             db.session.add(quiz)
             db.session.commit()

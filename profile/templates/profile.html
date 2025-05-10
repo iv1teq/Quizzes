@@ -18,7 +18,7 @@
         </div>
         <div class="quiz-stats">
             <div class="quiz-count-box">
-                <p>0</p>
+                <p>{{ created_quizzes_count }}</p>
                 <span>Created quizzes</span>
             </div>
             <div class="quiz-count-box">
@@ -30,8 +30,22 @@
 
     <div class="create-quiz-section">
         <h2>Created quizzes</h2>
-        <p>You have no quizzes completed or created</p>
-        <button class="create-button">Create a quiz</button>
+    
+        {% if quizzes %}
+            <div class="quiz-grid">
+                {% for quiz in quizzes %}
+                    <div class="quiz-card">
+                        <img src="{{ url_for('New_Quiz.static', filename='media/' + quiz.image) }}" alt="Quiz Image">
+                        <p>{{ quiz.name }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>You have no quizzes completed or created</p>
+        {% endif %}
+    
+        <a href="new-quiz-settings" class="create-button">Create a quiz</a>
     </div>
+    
 </div>
 {% endblock %}
