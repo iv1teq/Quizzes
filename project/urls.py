@@ -21,6 +21,8 @@ New_Quiz_App.New_Quiz.add_url_rule(rule= '/new-quiz-student', view_func=New_Quiz
 New_Quiz_App.New_Quiz.add_url_rule(rule= '/new-quiz-student-2', view_func=New_Quiz_App.render_new_quiz_2_student, methods = ['POST', 'GET'])
 
 home_app.home.add_url_rule('/log-out', view_func=logout, methods=['POST', 'GET'])
+New_Quiz_App.New_Quiz.add_url_rule('/save_quiz', view_func=New_Quiz_App.save_quiz, methods=['POST'])
+
 
 project.register_blueprint(blueprint=home_app.home)
 project.register_blueprint(registration.registration)
