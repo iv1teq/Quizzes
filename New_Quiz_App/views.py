@@ -37,6 +37,9 @@ def render_new_quiz_settigs():
             with open(file_path, 'w') as f:
                 json.dump(empty_data, f)
 
+            media_path = os.path.join('New_Quiz_App', 'static', 'media', current_user.name)
+            os.makedirs(media_path, exist_ok=True)
+
             quiz = Quiz(
                 name=quiz_name,
                 json_test_data=filename,
