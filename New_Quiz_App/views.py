@@ -9,8 +9,8 @@ import json
 
 @login_required
 def render_new_quiz():
-    # if not current_user.is_admin:
-    #     return render_template('error_403.html')
+    if not current_user.is_admin:
+        return render_template('error_403.html')
 
     context = {
         'page': 'home',
@@ -31,18 +31,21 @@ def render_new_quiz_settigs():
             filename = f"{quiz_name}.json"
             empty_data = []
 
-            file_path = os.path.join('New_Quiz_App', 'static', 'quiz_data', filename)
-            os.makedirs(os.path.dirname(file_path), exist_ok=True)
+            quiz_folder = os.path.join('New_Quiz_App', 'static', 'quiz_data', quiz_name)
+            os.makedirs(quiz_folder, exist_ok=True)
 
+        
+            file_path = os.path.join(quiz_folder, filename)
             with open(file_path, 'w') as f:
                 json.dump(empty_data, f)
 
-            media_path = os.path.join('New_Quiz_App', 'static', 'media', current_user.name)
+      
+            media_path = os.path.join('media', quiz_name)
             os.makedirs(media_path, exist_ok=True)
 
             quiz = Quiz(
                 name=quiz_name,
-                json_test_data=filename,
+                json_test_data=os.path.join(quiz_name, filename), 
                 count_questions=int(request.form['num-questions']),
                 topic=request.form['topic'],
                 description=request.form['description']
@@ -53,7 +56,7 @@ def render_new_quiz_settigs():
             return redirect(url_for('New_Quiz.render_new_quiz'))
 
         except Exception as e:
-            print(e)
+            print(f"Error while creating quiz: {e}")
 
     context = {
         'page': 'home',
@@ -61,6 +64,7 @@ def render_new_quiz_settigs():
         'name': current_user.id
     }
     return render_template('New_Quiz_Settings.html', **context)
+
 
 
 # Для студентов
