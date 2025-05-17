@@ -9,7 +9,8 @@ from profile.models import User
 DIR = os.path.dirname(os.path.abspath(__file__))
 
 @login_required
-def render_new_quiz(name):
+
+def render_new_quiz():
     if not current_user.is_admin:
         return render_template('error_403.html')
 
@@ -37,8 +38,12 @@ def render_new_quiz_settigs():
             
             file_path = os.path.join(DIR, 'static', 'quiz_data', filename)
 
-            os.makedirs(os.path.dirname(file_path), exist_ok=True)
 
+            quiz_folder = os.path.join('New_Quiz_App', 'static', 'quiz_data', quiz_name)
+            os.makedirs(quiz_folder, exist_ok=True)
+
+        
+            file_path = os.path.join(quiz_folder, filename)
             with open(file_path, 'w') as f:
                 json.dump(empty_data, f)
             
@@ -55,12 +60,13 @@ def render_new_quiz_settigs():
 
             id_user = User.get_id(current_user)
 
-            media_path = os.path.join('New_Quiz_App', 'static', 'media', current_user.name)
+      
+            media_path = os.path.join('media', quiz_name)
             os.makedirs(media_path, exist_ok=True)
 
             quiz = Quiz(
                 name=quiz_name,
-                json_test_data=filename,
+                json_test_data=os.path.join(quiz_name, filename), 
                 count_questions=int(request.form['num-questions']),
                 topic=request.form['topic'],
                 image=f"{image_filename}" if image_filename else None,
@@ -73,7 +79,8 @@ def render_new_quiz_settigs():
             return redirect(f'/new-quiz/{quiz_name}')
 
         except Exception as e:
-            print(f"Ошибка: {e}")
+            print(f"Error while creating quiz: {e}")
+
 
     context = {
         'page': 'home',
@@ -81,6 +88,7 @@ def render_new_quiz_settigs():
         'name': current_user.name
     }
     return render_template('New_Quiz_Settings.html', **context)
+
 
 
 # Для студентов
