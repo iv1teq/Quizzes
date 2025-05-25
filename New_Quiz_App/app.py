@@ -1,28 +1,56 @@
+from flask import Blueprint, request
 import os
 import json
-from flask import Blueprint, request, jsonify
-
-DIR = os.path.dirname(os.path.abspath(__file__))
 
 New_Quiz = Blueprint(
     "New_Quiz",
     __name__,
     template_folder="templates",
-    static_folder=os.path.join(DIR, 'static'),
+    static_folder="static",
     static_url_path="/new_quiz",
 
 )
 
-QUIZ_SAVE_DIR = os.path.join(DIR, 'static', 'quiz_data')
+import flask,os
 
-os.makedirs(QUIZ_SAVE_DIR, exist_ok=True)
 
-@New_Quiz.route('/save_quiz', methods=['POST'])
+DIR=os.path.abspath(os.path.dirname(__file__))
+
+join = flask.Blueprint(
+    name= "join",
+    import_name = "join",
+    template_folder='templates',
+    static_folder=os.path.join(DIR, "static"),
+    static_url_path="/join"
+)
+
+DATA_FOLDER = os.path.join(os.path.dirname(__file__), "static", "quiz_data")
+os.makedirs(DATA_FOLDER, exist_ok=True)
+DATA_FILE = os.path.join(DATA_FOLDER, "quiz_data.json")
+
 def save_quiz():
-    data = request.get_json()
-    save_path = os.path.join(QUIZ_SAVE_DIR, 'quiz_data.json')
-    with open(save_path, 'w', encoding='utf-8') as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
-        
+    
+    new_data = request.get_json()
 
   
+    if os.path.exists(DATA_FILE):
+        with open(DATA_FILE, 'r', encoding='utf-8') as file:
+            try:
+                old_data = json.load(file)
+            except:
+                old_data = []
+    else:
+        old_data = []
+
+   
+    if not isinstance(old_data, list):
+        old_data = []
+
+
+    old_data.append(new_data)
+
+
+    with open(DATA_FILE, 'w', encoding='utf-8') as file:
+        json.dump(old_data, file, ensure_ascii=False, indent=2)
+
+    return {'status': 'success'}

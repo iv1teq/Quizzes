@@ -1,4 +1,4 @@
-import home_app, New_Quiz_App, registration, authorization, history, join
+import home_app, New_Quiz_App, registration, authorization, history
 
 from profile.app import profille
 from profile.views import show_profile_page
@@ -21,9 +21,13 @@ New_Quiz_App.New_Quiz.add_url_rule(rule= '/new-quiz-student', view_func=New_Quiz
 New_Quiz_App.New_Quiz.add_url_rule(rule= '/new-quiz-student-2', view_func=New_Quiz_App.render_new_quiz_2_student, methods = ['POST', 'GET'])
 
 home_app.home.add_url_rule('/log-out', view_func=logout, methods=['POST', 'GET'])
-join.join.add_url_rule('/join', view_func=join.views.render_join, methods=['POST', 'GET'])
 
-project.register_blueprint(blueprint=join.join)
+New_Quiz_App.New_Quiz.add_url_rule('/save_quiz', view_func=New_Quiz_App.save_quiz, methods=['POST'])
+
+New_Quiz_App.join.add_url_rule('/join', view_func=New_Quiz_App.views.render_join, methods=['POST', 'GET'])
+
+
+project.register_blueprint(blueprint=New_Quiz_App.join)
 project.register_blueprint(blueprint=home_app.home)
 project.register_blueprint(registration.registration)
 project.register_blueprint(authorization.authorization)

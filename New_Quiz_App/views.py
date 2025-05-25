@@ -5,11 +5,14 @@ from project.settings import db
 from flask_login import login_required, current_user
 from werkzeug.utils import secure_filename
 from profile.models import User
+import flask
+
 
 DIR = os.path.dirname(os.path.abspath(__file__))
 
 @login_required
-def render_new_quiz(name):
+
+def render_new_quiz():
     if not current_user.is_admin:
         return render_template('error_403.html')
 
@@ -37,14 +40,17 @@ def render_new_quiz_settigs():
             
             file_path = os.path.join(DIR, 'static', 'quiz_data', filename)
 
-            os.makedirs(os.path.dirname(file_path), exist_ok=True)
 
+            quiz_folder = os.path.join('New_Quiz_App', 'static', 'quiz_data', quiz_name)
+            os.makedirs(quiz_folder, exist_ok=True)
+
+        
+            file_path = os.path.join(quiz_folder, filename)
             with open(file_path, 'w') as f:
                 json.dump(empty_data, f)
             
             image =request.files['image']
 
-            
             image = request.files.get('image')
             image_filename = None
             if image and image.filename != '':
@@ -55,9 +61,14 @@ def render_new_quiz_settigs():
                 image.save(image_path)
 
             id_user = User.get_id(current_user)
+
+      
+            media_path = os.path.join('media', quiz_name)
+            os.makedirs(media_path, exist_ok=True)
+
             quiz = Quiz(
                 name=quiz_name,
-                json_test_data=filename,
+                json_test_data=os.path.join(quiz_name, filename), 
                 count_questions=int(request.form['num-questions']),
                 topic=request.form['topic'],
                 image=f"{image_filename}" if image_filename else None,
@@ -70,7 +81,8 @@ def render_new_quiz_settigs():
             return redirect(f'/new-quiz/{quiz_name}')
 
         except Exception as e:
-            print(f"Ошибка: {e}")
+            print(f"Error while creating quiz: {e}")
+
 
     context = {
         'page': 'home',
@@ -78,6 +90,7 @@ def render_new_quiz_settigs():
         'name': current_user.name
     }
     return render_template('New_Quiz_Settings.html', **context)
+
 
 
 # Для студентов
@@ -100,3 +113,10 @@ def render_new_quiz_2_student():
         'name': current_user.name
     }
     return render_template('New_Quiz_App_Student_2.html', **context)
+
+
+def render_join():
+    context = {'page': 'home',
+               'is_auth': current_user.is_authenticated,
+               'name': current_user.name}
+    return flask.render_template(template_name_or_list='join.html', **context)
