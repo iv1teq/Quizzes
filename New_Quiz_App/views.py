@@ -5,8 +5,6 @@ from flask_login import login_required, current_user
 import os
 import json
 
-# Для учителей
-
 @login_required
 def render_new_quiz():
     if not current_user.is_admin:
@@ -28,24 +26,25 @@ def render_new_quiz_settigs():
     if request.method == 'POST':
         try:
             quiz_name = request.form['quiz-name']
-            filename = f"{quiz_name}.json"
+            filename = "json_data.json"
             empty_data = []
 
-            quiz_folder = os.path.join('New_Quiz_App', 'static', 'quiz_data', quiz_name)
-            os.makedirs(quiz_folder, exist_ok=True)
+            base_media_dir = 'media'
+            os.makedirs(base_media_dir, exist_ok=True)
 
-        
-            file_path = os.path.join(quiz_folder, filename)
+            quiz_folder_in_media = os.path.join(base_media_dir, quiz_name)
+            os.makedirs(quiz_folder_in_media, exist_ok=True)
+
+            file_path = os.path.join(quiz_folder_in_media, filename)
             with open(file_path, 'w') as f:
                 json.dump(empty_data, f)
 
-      
-            media_path = os.path.join('media', quiz_name)
-            os.makedirs(media_path, exist_ok=True)
+            images_folder_in_media = os.path.join(base_media_dir, 'Images')
+            os.makedirs(images_folder_in_media, exist_ok=True)
 
             quiz = Quiz(
                 name=quiz_name,
-                json_test_data=os.path.join(quiz_name, filename), 
+                json_test_data=os.path.join(base_media_dir, quiz_name, filename),
                 count_questions=int(request.form['num-questions']),
                 topic=request.form['topic'],
                 description=request.form['description']
@@ -65,9 +64,6 @@ def render_new_quiz_settigs():
     }
     return render_template('New_Quiz_Settings.html', **context)
 
-
-
-# Для студентов
 
 @login_required
 def render_new_quiz_student():
