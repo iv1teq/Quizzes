@@ -1,0 +1,24 @@
+[
+  {
+    "mode": "large-selection",
+    "question": "asdfjhgagjhsdf",
+    "answers": [
+      {
+        "text": "asdhgkf",
+        "correct": true
+      },
+      {
+        "text": "adsfg",
+        "correct": false
+      },
+      {
+        "text": "sdfh",
+        "correct": false
+      },
+      {
+        "text": "hsdfg",
+        "correct": true
+      }
+    ]
+  }
+]

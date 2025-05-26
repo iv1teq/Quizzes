@@ -1,36 +1,85 @@
-$(function() {
-    $('.big-choice, .fill-form').click(function() {
-        let isBig = $(this).hasClass('big-choice');
-        $('.big-choice').toggleClass('active', isBig);
-        $('.fill-form').toggleClass('active', !isBig);
-        $('.large-selection-view').toggle(isBig);
-        $('.fill-form-view').toggle(!isBig);
+$(document).ready(function () {
+    $('.big-choice').click(function () {
+        $('.big-choice').addClass('active');
+        $('.fill-form').removeClass('active');
+        $('.large-selection-view').show();
+        $('.fill-form-view').hide();
     });
 
-    $('.ai-icon, .ia-label').click(e => {
-        e.preventDefault();
+    $('.fill-form').click(function () {
+        $('.fill-form').addClass('active');
+        $('.big-choice').removeClass('active');
+        $('.fill-form-view').show();
+        $('.large-selection-view').hide();
+    });
+
+
+    $('.ai-icon, .ia-label').click(function () {
         $('#modalOverlay').addClass('active');
         $('body').css('overflow', 'hidden');
     });
 
-    $('#modalOverlay').click(e => {
-        if (e.target !== this) return;
-        $('#modalOverlay').removeClass('active');
-        $('body').css('overflow', '');
+
+    $('#modalOverlay').click(function (e) {
+        if (e.target === this) {
+            $(this).removeClass('active');
+            $('body').css('overflow', '');
+        }
     });
 
-    $(document).keydown(e => {
-        if (e.key === 'Escape' && $('#modalOverlay').hasClass('active')) {
+    $(document).keydown(function (e) {
+        if (e.key === 'Escape') {
             $('#modalOverlay').removeClass('active');
             $('body').css('overflow', '');
         }
     });
 
-    $('.submit-ai-promt-btn').click(() => {
+    $('.submit-ai-promt-btn').click(function () {
         $('#modalOverlay').removeClass('active');
         $('body').css('overflow', '');
     });
 
-    $('.big-choice').addClass('active');
-    $('.fill-form-view').hide();
+
+    $('.enter-btn').click(function () {
+        let quizData = { mode: '', question: '', answers: [] };
+
+        if ($('.large-selection-view').is(':visible')) {
+            quizData.mode = 'large-selection';
+            quizData.question = $('.large-selection-view .question-input').val().trim();
+
+            $('.answers-options-frame .answer-container').each(function () {
+                let answerText = $(this).find('input[type="text"]').val().trim();
+                if (answerText) {
+                    quizData.answers.push({
+                        text: answerText,
+                        correct: $(this).find('.answer-checkbox').prop('checked'),
+                    });
+                }
+            });
+        } else {
+            quizData.mode = 'fill-form';
+            quizData.question = $('.fill-form-view .question-input').val().trim();
+            let answerText = $('.fill-form-view .answer-input').val().trim();
+            if (answerText) {
+                quizData.answers.push({ text: answerText, correct: true });
+            }
+        }
+
+
+        $.ajax({
+            url: '/save_quiz',
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(quizData),
+            success: function () {
+                clearForm();
+            },
+        });
+    });
+
+
+    function clearForm() {
+        $('input[type="text"]').val('');
+        $('input[type="checkbox"]').prop('checked', false);
+    }
 });

@@ -13,16 +13,19 @@
     <div class="title-div">
         <p class="title-p">New Quizzes</p>
     </div>
+    
     <div class="div-content">
         <div class="side-bar-content">
             <button class="big-choice active">
                 <img src="{{ url_for('New_Quiz.static', filename='img/Big-Choice.svg') }}" alt="Big choice">
                 <p>Large selection</p>
             </button>
+            
             <button class="fill-form">
                 <img src="{{ url_for('New_Quiz.static', filename='img/Fill-Form.svg') }}" alt="Fill Form">
                 <p>Fill form</p>
             </button>
+            
             <div class="scroll-frame">
                 <div>#1 Fill form</div>
                 <div>#2 Large selection</div>
@@ -41,23 +44,30 @@
             <div class="view-container">
                 <div class="view large-selection-view" data-view="large-selection">
                     <div class="fill-form-frame">
-                        <img class="ai-icon" src="{{ url_for('New_Quiz.static', filename='img/ai-icon.svg') }}" alt="AI Icon"/>
-                        <p class="ia-label">Generate a question</p>
-                        <input type="text" placeholder="Write a question:">
+                        <div class="ai-container">
+                            <img class="ai-icon" src="{{ url_for('New_Quiz.static', filename='img/ai-icon.svg') }}" alt="AI Icon"/>
+                            <p class="ia-label">Generate a question</p>
+                        </div>
+                        <input type="text" class="question-input" placeholder="Write a question:">
+                        <button class="enter-btn">Enter</button>
                     </div>
+                    
                     <div class="answers-options-frame">
                         <div class="answer-container">
                             <input type="text" class="answers-options-frame-blue" placeholder="Answer 1">
                             <input type="checkbox" class="answer-checkbox">
                         </div>
+                        
                         <div class="answer-container">
                             <input type="text" class="answers-options-frame-green" placeholder="Answer 2">
                             <input type="checkbox" class="answer-checkbox">
                         </div>
+                        
                         <div class="answer-container">
                             <input type="text" class="answers-options-frame-yellow" placeholder="Answer 3">
                             <input type="checkbox" class="answer-checkbox">
                         </div>
+                        
                         <div class="answer-container">
                             <input type="text" class="answers-options-frame-red" placeholder="Answer 4">
                             <input type="checkbox" class="answer-checkbox">
@@ -67,12 +77,16 @@
 
                 <div class="view fill-form-view" data-view="fill-form" style="display: none;">
                     <div class="fill-form-frame">
-                        <img class="ai-icon" src="{{ url_for('New_Quiz.static', filename='img/ai-icon.svg') }}" alt="AI Icon"/>
-                        <p class="ia-label">Generate a question</p>
-                        <input type="text" placeholder="Write a question:">
+                        <div class="ai-container">
+                            <img class="ai-icon" src="{{ url_for('New_Quiz.static', filename='img/ai-icon.svg') }}" alt="AI Icon"/>
+                            <p class="ia-label">Generate a question</p>
+                        </div>
+                        <input type="text" class="question-input" placeholder="Write a question:">
+                        <button class="enter-btn">Enter</button>
                     </div>
+                    
                     <div class="fill-form-frame-2">
-                        <input type="text" placeholder="Write a question:">
+                        <input type="text" class="answer-input" placeholder="Write the answer:">
                         <button class="enter-btn">Enter</button>
                     </div>
                 </div>
@@ -80,6 +94,7 @@
         </div>
     </div>
 </div>
+
 <div class="modal-overlay" id="modalOverlay">
     <div class="modal-content">
         <h1>Generating questions and answers on the topic</h1>
