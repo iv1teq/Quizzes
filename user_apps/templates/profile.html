@@ -3,14 +3,14 @@
 {% block title %}Профиль{% endblock %}
 
 {% block head %}
-<link rel="stylesheet" href="{{ url_for('profile.static', filename='css/profile.css') }}">
+<link rel="stylesheet" href="{{ url_for('user_apps.static.static', filename='css/profile.css') }}">
 {% endblock %}
 
 {% block main %}
 <div class="profile-container">
     <div class="profile-header">
         <div class="profile-info">
-            <img src="{{ url_for('profile.static', filename='img/Avatar.png') }}" alt="Avatar">
+            <img src="{{ url_for('user_apps.static', filename='img/Avatar.png') }}" alt="Avatar">
             <div class="l">
                 <h1>{{ name }}</h1>
                 <a href="mailto:{{ email }}">{{ email }}</a>
