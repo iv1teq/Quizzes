@@ -35,6 +35,7 @@ $(document).ready(function() {
     $('.submit-ai-promt-btn').click(function() {
         var topic = $('.input-ai-promt').val().trim();
         if (topic) {
+            console.log('Topic:', topic);
             $.ajax({
                 url: '/save_topic',
                 method: 'POST',

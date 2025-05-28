@@ -5,6 +5,7 @@ from flask_login import login_required, current_user
 import os
 import json
 from flask import request, jsonify
+import string
 
 @login_required
 def render_new_quiz():
@@ -90,10 +91,18 @@ saved_topic = None
 
 @login_required
 def save_topic():
-    global saved_topic
     data = request.get_json()
     topic = data.get('topic')
 
-    saved_topic = topic
+    if topic:
+        if any(char in "абвгдеєжзиіїйклмнопрстуфхцчшщьюяАБВГДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ" for char in topic):
+            language = "Ukrainian"
+        elif any(char in string.ascii_letters for char in topic):
+            language = "English"
+        else:
+            language = "Unknown"
 
-    return jsonify({'message': 'РАБОТАЕТ!!!'}), 200
+        print(f"Received topic: {topic}, Language: {language}")
+        return jsonify({"status": "success", "topic": topic, "language": language})
+    else:
+        return jsonify({"status": "error", "message": "No topic provided"}), 400
