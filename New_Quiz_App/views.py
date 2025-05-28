@@ -4,11 +4,12 @@ from project.settings import db
 from flask_login import login_required, current_user
 import os
 import json
+from flask import request, jsonify
 
 @login_required
 def render_new_quiz():
-    if not current_user.is_admin:
-        return render_template('error_403.html')
+    # if not current_user.is_admin:
+    #     return render_template('error_403.html')
 
     context = {
         'page': 'home',
@@ -83,3 +84,16 @@ def render_new_quiz_2_student():
         'name': current_user.name
     }
     return render_template('New_Quiz_App_Student_2.html', **context)
+
+
+saved_topic = None
+
+@login_required
+def save_topic():
+    global saved_topic
+    data = request.get_json()
+    topic = data.get('topic')
+
+    saved_topic = topic
+
+    return jsonify({'message': 'РАБОТАЕТ!!!'}), 200
