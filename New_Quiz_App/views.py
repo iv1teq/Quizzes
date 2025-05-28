@@ -6,13 +6,15 @@ from flask_login import login_required, current_user
 from werkzeug.utils import secure_filename
 from profile.models import User
 import flask
+import secrets
+import string
 
 
 DIR = os.path.dirname(os.path.abspath(__file__))
 
 @login_required
 
-def render_new_quiz():
+def render_new_quiz(name):
     if not current_user.is_admin:
         return render_template('error_403.html')
 
@@ -65,7 +67,9 @@ def render_new_quiz_settigs():
       
             media_path = os.path.join('media', quiz_name)
             os.makedirs(media_path, exist_ok=True)
-
+            code = ''
+            for number in range(6):
+                code += secrets.choice(string.digits)
             quiz = Quiz(
                 name=quiz_name,
                 json_test_data=os.path.join(quiz_name, filename), 
@@ -73,6 +77,7 @@ def render_new_quiz_settigs():
                 topic=request.form['topic'],
                 image=f"{image_filename}" if image_filename else None,
                 description=request.form['description'],
+                enter_code=code,
                 owner = id_user
             )
             db.session.add(quiz)
