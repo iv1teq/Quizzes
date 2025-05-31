@@ -13,14 +13,17 @@ DIR = os.path.dirname(os.path.abspath(__file__))
 def render_new_quiz(name):
     if not current_user.is_admin:
         return render_template('error_403.html')
+    # print(name)
+    print()
+    quiz = db.one_or_404(db.select(Quiz).filter_by(name=name))
 
     context = {
         'page': 'home',
         'is_auth': current_user.is_authenticated,
-        'name': current_user.name
+        'name': current_user.name,
+        'quiz': quiz
     }
     return render_template('New_Quiz_App.html', **context)
-
 
 @login_required
 def render_new_quiz_settigs():
@@ -34,7 +37,7 @@ def render_new_quiz_settigs():
             filename = f"{quiz_name}.json"
             empty_data = []
             
-
+            
             
             file_path = os.path.join(DIR, 'static', 'quiz_data', filename)
 
