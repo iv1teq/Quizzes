@@ -5,22 +5,20 @@ from project.settings import db
 from flask_login import login_required, current_user
 from werkzeug.utils import secure_filename
 from profile.models import User
-
 import os
 import json
 from flask import request, jsonify
 import string
-
 import flask
 import secrets
-import string
+
 
 
 DIR = os.path.dirname(os.path.abspath(__file__))
 
 @login_required
 
-def render_new_quiz():
+def render_new_quiz(name):
     if not current_user.is_admin:
         return render_template('error_403.html')
     quiz_name = session.get('quiz_name') or request.args.get('quiz_name')
@@ -28,13 +26,19 @@ def render_new_quiz():
     if not quiz_name:
         return redirect(url_for('New_Quiz.render_new_quiz_settigs'))
 
+    quiz = db.one_or_404(db.select(Quiz).filter_by(name=name))
+    num_questions = quiz.count_questions 
+
+    questions = [f"Question #{i + 1}" for i in range(num_questions)]
+
 
     context = {
         'page': 'home',
         'is_auth': current_user.is_authenticated,
         'name': current_user.name,
-        'quiz_name': quiz_name  
-
+        'quiz_name': quiz_name,
+        'quiz': quiz,
+        'questions': questions
     }
     return render_template('New_Quiz_App.html', **context)
 
@@ -77,17 +81,14 @@ def render_new_quiz_settigs():
 
             id_user = User.get_id(current_user)
 
-
-            images_folder_in_media = os.path.join(base_media_dir, 'Images')
-            os.makedirs(images_folder_in_media, exist_ok=True)
-
-
-      
             media_path = os.path.join('media', quiz_name)
             os.makedirs(media_path, exist_ok=True)
             code = ''
             for number in range(6):
                 code += secrets.choice(string.digits)
+
+            images_folder_in_media = os.path.join(base_media_dir, 'Images')
+            os.makedirs(images_folder_in_media, exist_ok=True)
 
             quiz = Quiz(
                 name=quiz_name,
@@ -141,6 +142,13 @@ def render_new_quiz_2_student():
 
 
 
+
+def render_join():
+    context = {'page': 'home',
+               'is_auth': current_user.is_authenticated,
+               'name': current_user.name}
+    return flask.render_template(template_name_or_list='join.html', **context)
+
 saved_topic = None
 
 @login_required
@@ -160,10 +168,4 @@ def save_topic():
         return jsonify({"status": "success", "topic": topic, "language": language})
     else:
         return jsonify({"status": "error", "message": "No topic provided"}), 400
-
-def render_join():
-    context = {'page': 'home',
-               'is_auth': current_user.is_authenticated,
-               'name': current_user.name}
-    return flask.render_template(template_name_or_list='join.html', **context)
 
