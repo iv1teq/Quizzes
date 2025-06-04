@@ -1,7 +1,7 @@
 from flask_login import login_required, current_user, logout_user
 from flask import redirect, url_for
 import flask, flask_login
-from profile.models import User, db
+from user_apps.models import User, db
 from project import login_manager
 from New_Quiz_App.models import Quiz
 

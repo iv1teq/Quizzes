@@ -4,7 +4,7 @@ from .models import Quiz
 from project.settings import db
 from flask_login import login_required, current_user
 from werkzeug.utils import secure_filename
-from profile.models import User
+from user_apps.models import User
 
 DIR = os.path.dirname(os.path.abspath(__file__))
 

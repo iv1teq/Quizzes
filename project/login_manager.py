@@ -1,6 +1,6 @@
 import flask_login
 from .settings import project
-from profile.models import User
+from user_apps.models import User
 
 project.secret_key = "key"
 
