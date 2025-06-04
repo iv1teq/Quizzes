@@ -18,28 +18,39 @@ os.makedirs(DATA_FOLDER, exist_ok=True)
 DATA_FILE = os.path.join(DATA_FOLDER, "quiz_data.json")
 
 def save_quiz():
-    
     new_data = request.get_json()
+    
+    quiz_name = new_data.get('quiz_name')
+    if not quiz_name:
+        return {'status': 'error', 'message': 'Quiz name not provided'}, 400
 
-  
     if os.path.exists(DATA_FILE):
         with open(DATA_FILE, 'r', encoding='utf-8') as file:
             try:
-                old_data = json.load(file)
+                quiz_data = json.load(file)
             except:
-                old_data = []
+                quiz_data = {}
     else:
-        old_data = []
+        quiz_data = {}
 
-   
-    if not isinstance(old_data, list):
-        old_data = []
+    if not isinstance(quiz_data, dict):
+        quiz_data = {}
 
+    if quiz_name not in quiz_data:
+        quiz_data[quiz_name] = {
+            'name': quiz_name,
+            'topic': new_data.get('topic', ''),
+            'questions': []
+        }
 
-    old_data.append(new_data)
-
+    question_data = {
+        'mode': new_data.get('mode'),
+        'question': new_data.get('question'),
+        'answers': new_data.get('answers', [])
+    }
+    quiz_data[quiz_name]['questions'].append(question_data)
 
     with open(DATA_FILE, 'w', encoding='utf-8') as file:
-        json.dump(old_data, file, ensure_ascii=False, indent=2)
+        json.dump(quiz_data, file, ensure_ascii=False, indent=2)
 
     return {'status': 'success'}

@@ -54,7 +54,13 @@ $(document).ready(function() {
     });
 
     $('.enter-btn').click(function() {
-        let quizData = { mode: '', question: '', answers: [] };
+        let quizData = {
+            quiz_name: $('#quiz-name').val().trim() || 'default_quiz',
+            mode: '',
+            question: '',
+            answers: [],
+            topic: $('.input-ai-promt').val().trim() || ''
+        };
 
         if ($('.large-selection-view').is(':visible')) {
             quizData.mode = 'large-selection';
@@ -78,20 +84,29 @@ $(document).ready(function() {
             }
         }
 
-        $.ajax({
-            url: '/save_quiz',
-            method: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify(quizData),
-            success: function() {
-                clearForm();
-            },
-        });
+        if (quizData.question && quizData.answers.length > 0) {
+            $.ajax({
+                url: '/save_quiz',
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(quizData),
+                success: function() {
+                    console.log('Quiz data saved:', quizData);
+                    clearForm();
+                },
+                error: function(error) {
+                    console.error('Error saving quiz:', error);
+                }
+            });
+        } else {
+            console.log('No valid quiz data to save.');
+        }
     });
 
     function clearForm() {
         $('input[type="text"]').val('');
         $('input[type="checkbox"]').prop('checked', false);
     }
+
 });
 
