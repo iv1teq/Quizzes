@@ -20,7 +20,7 @@ DIR = os.path.dirname(os.path.abspath(__file__))
 
 @login_required
 
-def render_new_quiz(name):
+def render_new_quiz():
     if not current_user.is_admin:
         return render_template('error_403.html')
     quiz_name = session.get('quiz_name') or request.args.get('quiz_name')
