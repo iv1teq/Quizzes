@@ -1,4 +1,4 @@
-from flask import request, render_template, redirect, url_for
+from flask import request, render_template, redirect, url_for, session
 from .models import Quiz
 from project.settings import db
 from flask_login import login_required, current_user
@@ -9,13 +9,15 @@ import string
 
 @login_required
 def render_new_quiz():
-    # if not current_user.is_admin:
-    #     return render_template('error_403.html')
+    quiz_name = session.get('quiz_name') or request.args.get('quiz_name')
+    if not quiz_name:
+        return redirect(url_for('New_Quiz.render_new_quiz_settigs'))
 
     context = {
         'page': 'home',
         'is_auth': current_user.is_authenticated,
-        'name': current_user.name
+        'name': current_user.name,
+        'quiz_name': quiz_name  
     }
     return render_template('New_Quiz_App.html', **context)
 
@@ -54,7 +56,8 @@ def render_new_quiz_settigs():
             db.session.add(quiz)
             db.session.commit()
 
-            return redirect(url_for('New_Quiz.render_new_quiz'))
+            session['quiz_name'] = quiz_name
+            return redirect(url_for('New_Quiz.render_new_quiz', quiz_name=quiz_name))
 
         except Exception as e:
             print(f"Error while creating quiz: {e}")
