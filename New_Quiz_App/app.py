@@ -11,7 +11,18 @@ New_Quiz = Blueprint(
 
 )
 
+import flask,os
 
+
+DIR=os.path.abspath(os.path.dirname(__file__))
+
+join = flask.Blueprint(
+    name= "join",
+    import_name = "join",
+    template_folder='templates',
+    static_folder=os.path.join(DIR, "static"),
+    static_url_path="/join"
+)
 
 DATA_FOLDER = os.path.join(os.path.dirname(__file__), "static", "quiz_data")
 os.makedirs(DATA_FOLDER, exist_ok=True)

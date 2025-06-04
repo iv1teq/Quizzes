@@ -5,15 +5,22 @@ from project.settings import db
 from flask_login import login_required, current_user
 from werkzeug.utils import secure_filename
 from profile.models import User
+
 import os
 import json
 from flask import request, jsonify
 import string
+
+import flask
+import secrets
+import string
+
+
 DIR = os.path.dirname(os.path.abspath(__file__))
 
 @login_required
 
-def render_new_quiz():
+def render_new_quiz(name):
     if not current_user.is_admin:
         return render_template('error_403.html')
     quiz_name = session.get('quiz_name') or request.args.get('quiz_name')
@@ -70,8 +77,17 @@ def render_new_quiz_settigs():
 
             id_user = User.get_id(current_user)
 
+
             images_folder_in_media = os.path.join(base_media_dir, 'Images')
             os.makedirs(images_folder_in_media, exist_ok=True)
+
+
+      
+            media_path = os.path.join('media', quiz_name)
+            os.makedirs(media_path, exist_ok=True)
+            code = ''
+            for number in range(6):
+                code += secrets.choice(string.digits)
 
             quiz = Quiz(
                 name=quiz_name,
@@ -80,6 +96,7 @@ def render_new_quiz_settigs():
                 topic=request.form['topic'],
                 image=f"{image_filename}" if image_filename else None,
                 description=request.form['description'],
+                enter_code=code,
                 owner = id_user
             )
 
@@ -123,6 +140,7 @@ def render_new_quiz_2_student():
     return render_template('New_Quiz_App_Student_2.html', **context)
 
 
+
 saved_topic = None
 
 @login_required
@@ -142,3 +160,10 @@ def save_topic():
         return jsonify({"status": "success", "topic": topic, "language": language})
     else:
         return jsonify({"status": "error", "message": "No topic provided"}), 400
+
+def render_join():
+    context = {'page': 'home',
+               'is_auth': current_user.is_authenticated,
+               'name': current_user.name}
+    return flask.render_template(template_name_or_list='join.html', **context)
+
