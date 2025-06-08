@@ -105,7 +105,25 @@ def save_topic():
         else:
             language = "Unknown"
 
-        print(f"Received topic: {topic}, Language: {language}")
+        quiz_name = session.get('quiz_name')
+        if quiz_name:
+            base_media_dir = 'media'
+            quiz_folder = os.path.join(base_media_dir, quiz_name)
+            file_path = os.path.join(quiz_folder, 'json_data.json')
+
+            quiz_data = []
+            if os.path.exists(file_path):
+                with open(file_path, 'r') as f:
+                    quiz_data = json.load(f)
+
+            quiz_data.append({
+                'topic': topic,
+                'language': language
+            })
+
+            with open(file_path, 'w') as f:
+                json.dump(quiz_data, f, ensure_ascii=False, indent=4)
+
         return jsonify({"status": "success", "topic": topic, "language": language})
     else:
         return jsonify({"status": "error", "message": "No topic provided"}), 400
