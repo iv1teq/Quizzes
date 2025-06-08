@@ -9,3 +9,4 @@ profille = flask.Blueprint(
     static_folder=os.path.join(DIR,"static"),
     static_url_path="/profile"
 )
+

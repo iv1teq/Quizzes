@@ -1,0 +1,9 @@
+{% block main %}
+<link rel="stylesheet" href="{{ url_for('New_Quiz.static', filename='css/error_404.css') }}">
+<div class="error-container">
+    <h2>404 - Сторінку не знайдено</h2>
+    <p>На жаль, сторінка, яку ви шукаєте, не існує.</p>
+    <p>Будь ласка, перевірте URL-адресу або поверніться на головну сторінку.</p>
+    <a href="{{ url_for('home_app.show_home_page') }}" class="home-link">Повернутися на головну</a>
+</div>
+{% endblock %}

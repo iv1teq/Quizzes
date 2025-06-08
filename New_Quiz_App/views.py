@@ -6,6 +6,11 @@ import os
 import json
 from flask import request, jsonify
 import string
+from flask import abort
+from werkzeug.utils import secure_filename
+from project.settings import DIR
+import secrets
+from profile.models import User
 
 @login_required
 def render_new_quiz():
@@ -23,7 +28,7 @@ def render_new_quiz():
 
 
 @login_required
-def render_new_quiz_settigs():
+def render_new_quiz_settings():
     if not current_user.is_admin:
         return render_template('error_403.html')
 
@@ -32,6 +37,12 @@ def render_new_quiz_settigs():
             quiz_name = request.form['quiz-name']
             filename = "json_data.json"
             empty_data = []
+
+            existing_quiz = Quiz.query.filter_by(name=quiz_name).first()
+            if existing_quiz:
+                return abort(404)  
+
+            file_path = os.path.join(DIR, 'static', 'quiz_data', filename)
 
             base_media_dir = 'media'
             os.makedirs(base_media_dir, exist_ok=True)
@@ -43,6 +54,23 @@ def render_new_quiz_settigs():
             with open(file_path, 'w') as f:
                 json.dump(empty_data, f)
 
+            image = request.files['image']
+            image_filename = None
+            if image and image.filename != '':
+                image_filename = secure_filename(image.filename)
+                media_folder = os.path.join(DIR, 'static', 'media')
+                os.makedirs(media_folder, exist_ok=True)
+                image_path = os.path.join(media_folder, image_filename)
+                image.save(image_path)
+
+            id_user = User.get_id(current_user)
+
+            media_path = os.path.join('media', quiz_name)
+            os.makedirs(media_path, exist_ok=True)
+            code = ''
+            for number in range(6):
+                code += secrets.choice(string.digits)
+
             images_folder_in_media = os.path.join(base_media_dir, 'Images')
             os.makedirs(images_folder_in_media, exist_ok=True)
 
@@ -51,8 +79,12 @@ def render_new_quiz_settigs():
                 json_test_data=os.path.join(base_media_dir, quiz_name, filename),
                 count_questions=int(request.form['num-questions']),
                 topic=request.form['topic'],
-                description=request.form['description']
+                image=f"{image_filename}" if image_filename else None,
+                description=request.form['description'],
+                enter_code=code,
+                owner=id_user
             )
+
             db.session.add(quiz)
             db.session.commit()
 
@@ -61,69 +93,11 @@ def render_new_quiz_settigs():
 
         except Exception as e:
             print(f"Error while creating quiz: {e}")
+            return abort(500)  
 
     context = {
         'page': 'home',
         'is_auth': current_user.is_authenticated,
-        'name': current_user.id
+        'name': current_user.name
     }
     return render_template('New_Quiz_Settings.html', **context)
-
-
-@login_required
-def render_new_quiz_student():
-    context = {
-        'page': 'home',
-        'is_auth': current_user.is_authenticated,
-        'name': current_user.name
-    }
-    return render_template('New_Quiz_App_Student.html', **context)
-
-
-@login_required
-def render_new_quiz_2_student():
-    context = {
-        'page': 'home',
-        'is_auth': current_user.is_authenticated,
-        'name': current_user.name
-    }
-    return render_template('New_Quiz_App_Student_2.html', **context)
-
-
-saved_topic = None
-
-@login_required
-def save_topic():
-    data = request.get_json()
-    topic = data.get('topic')
-
-    if topic:
-        if any(char in "абвгдеєжзиіїйклмнопрстуфхцчшщьюяАБВГДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ" for char in topic):
-            language = "Ukrainian"
-        elif any(char in string.ascii_letters for char in topic):
-            language = "English"
-        else:
-            language = "Unknown"
-
-        quiz_name = session.get('quiz_name')
-        if quiz_name:
-            base_media_dir = 'media'
-            quiz_folder = os.path.join(base_media_dir, quiz_name)
-            file_path = os.path.join(quiz_folder, 'json_data.json')
-
-            quiz_data = []
-            if os.path.exists(file_path):
-                with open(file_path, 'r') as f:
-                    quiz_data = json.load(f)
-
-            quiz_data.append({
-                'topic': topic,
-                'language': language
-            })
-
-            with open(file_path, 'w') as f:
-                json.dump(quiz_data, f, ensure_ascii=False, indent=4)
-
-        return jsonify({"status": "success", "topic": topic, "language": language})
-    else:
-        return jsonify({"status": "error", "message": "No topic provided"}), 400

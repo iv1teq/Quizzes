@@ -1,6 +1,7 @@
 from flask import Blueprint, request
 import os
 import json
+from flask import render_template
 
 New_Quiz = Blueprint(
     "New_Quiz",
@@ -59,3 +60,8 @@ def save_quiz():
         json.dump(quiz_content, file, ensure_ascii=False, indent=2)
 
     return {'status': 'success', 'message': f'Quiz "{quiz_name}" data saved successfully.'}
+
+
+@New_Quiz.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
