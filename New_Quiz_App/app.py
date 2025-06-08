@@ -10,9 +10,8 @@ New_Quiz = Blueprint(
     static_url_path="/new_quiz",
 )
 
-DATA_FOLDER = os.path.join(os.path.dirname(__file__), "static", "quiz_data")
-os.makedirs(DATA_FOLDER, exist_ok=True)
-DATA_FILE = os.path.join(DATA_FOLDER, "quiz_data.json")
+MEDIA_BASE_FOLDER = os.path.join(os.path.dirname(__file__), "static", "Media")
+os.makedirs(MEDIA_BASE_FOLDER, exist_ok=True)
 
 @New_Quiz.route('/save_quiz', methods=['POST'])
 def save_quiz():
@@ -22,33 +21,41 @@ def save_quiz():
     if not quiz_name:
         return {'status': 'error', 'message': 'Quiz name not provided'}, 400
 
-    if os.path.exists(DATA_FILE):
-        with open(DATA_FILE, 'r', encoding='utf-8') as file:
+    quiz_folder = os.path.join(MEDIA_BASE_FOLDER, quiz_name)
+    os.makedirs(quiz_folder, exist_ok=True)
+
+    quiz_data_file = os.path.join(quiz_folder, "json_data.json")
+
+    quiz_content = {}
+    if os.path.exists(quiz_data_file):
+        with open(quiz_data_file, 'r', encoding='utf-8') as file:
             try:
-                quiz_data = json.load(file)
-            except:
-                quiz_data = {}
-    else:
-        quiz_data = {}
+                quiz_content = json.load(file)
+            except json.JSONDecodeError:
+                quiz_content = {}
+    
+    if not isinstance(quiz_content, dict):
+        quiz_content = {}
 
-    if not isinstance(quiz_data, dict):
-        quiz_data = {}
-
-    if quiz_name not in quiz_data:
-        quiz_data[quiz_name] = {
+    if not quiz_content:
+        quiz_content = {
             'name': quiz_name,
             'topic': new_data.get('topic', ''),
             'questions': []
         }
+    
+    if 'questions' not in quiz_content or not isinstance(quiz_content['questions'], list):
+        quiz_content['questions'] = []
+
 
     question_data = {
         'mode': new_data.get('mode'),
         'question': new_data.get('question'),
         'answers': new_data.get('answers', [])
     }
-    quiz_data[quiz_name]['questions'].append(question_data)
+    quiz_content['questions'].append(question_data)
 
-    with open(DATA_FILE, 'w', encoding='utf-8') as file:
-        json.dump(quiz_data, file, ensure_ascii=False, indent=2)
+    with open(quiz_data_file, 'w', encoding='utf-8') as file:
+        json.dump(quiz_content, file, ensure_ascii=False, indent=2)
 
-    return {'status': 'success'}
+    return {'status': 'success', 'message': f'Quiz "{quiz_name}" data saved successfully.'}
