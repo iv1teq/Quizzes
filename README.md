@@ -2,6 +2,7 @@ Hello world
 
 
 Учасники команди:
+
 [Дмитро Печенюк](https://github.com/DmitriyPechenyuk0) - Тім лід
 
 [Віктор Горюнов](https://github.com/iv1teq) - Учасник
